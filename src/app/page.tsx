@@ -4,6 +4,91 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import LoadingIntro from "./components/LoadingIntro";
 import Link from "next/link";
+import React from "react";
+
+// Theme context and provider
+const ThemeContext = React.createContext({
+  theme: "light",
+  toggleTheme: () => {},
+});
+
+function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    // Check for saved theme preference or system preference
+    const savedTheme = localStorage.getItem("theme");
+    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+      .matches
+      ? "dark"
+      : "light";
+    setTheme(savedTheme || systemTheme);
+  }, []);
+
+  useEffect(() => {
+    // Update document class and save preference
+    document.documentElement.classList.remove("light", "dark");
+    document.documentElement.classList.add(theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  };
+
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+}
+
+// Theme toggle button component
+function ThemeToggle() {
+  const { theme, toggleTheme } = React.useContext(ThemeContext);
+
+  return (
+    <motion.button
+      onClick={toggleTheme}
+      className="fixed top-4 right-4 z-50 p-2 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-pink-200 dark:border-pink-800 shadow-lg hover:scale-110 transition-transform"
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.95 }}
+      aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+    >
+      {theme === "light" ? (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="w-6 h-6 text-gray-800"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
+          />
+        </svg>
+      ) : (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="w-6 h-6 text-yellow-300"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+          />
+        </svg>
+      )}
+    </motion.button>
+  );
+}
 
 // Chatbot Q&A data
 const chatbotQA = [
@@ -35,6 +120,7 @@ function ChatBot() {
   ]);
   const [input, setInput] = useState("");
   const chatEndRef = useRef<HTMLDivElement>(null);
+  // const { theme } = React.useContext(ThemeContext);
 
   useEffect(() => {
     if (open && chatEndRef.current) {
@@ -68,14 +154,14 @@ function ChatBot() {
       {/* Floating Chat Button */}
       <button
         onClick={() => setOpen((o) => !o)}
-        className="fixed z-[9999] bottom-6 right-6 bg-pink-600 hover:bg-pink-700 text-white rounded-full shadow-lg w-16 h-16 flex items-center justify-center text-3xl focus:outline-none"
+        className="fixed z-[9999] bottom-6 right-6 bg-pink-600 hover:bg-pink-700 dark:bg-pink-500 dark:hover:bg-pink-600 text-white rounded-full shadow-lg w-16 h-16 flex items-center justify-center text-3xl focus:outline-none transition-colors duration-300"
         aria-label={open ? "Close chat" : "Open chat"}
       >
         {open ? "×" : <span className="font-bold">💬</span>}
       </button>
       {/* Chat Window */}
       {open && (
-        <div className="fixed z-[9999] bottom-24 right-6 w-80 max-w-[95vw] bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border-2 border-pink-200 dark:border-pink-900/40 flex flex-col overflow-hidden animate-fade-in">
+        <div className="fixed z-[9999] bottom-24 right-6 w-80 max-w-[95vw] bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border-2 border-pink-200 dark:border-pink-900/40 flex flex-col overflow-hidden animate-fade-in transition-colors duration-300">
           <div className="bg-gradient-to-r from-pink-600 to-fuchsia-500 text-white px-4 py-3 font-bold text-lg">
             Ask Tigist&apos;s Assistant
           </div>
@@ -91,8 +177,8 @@ function ChatBot() {
                   className={`px-4 py-2 rounded-2xl shadow ${
                     msg.from === "bot"
                       ? "bg-pink-100 dark:bg-pink-900/40 text-pink-700 dark:text-pink-200"
-                      : "bg-pink-600 text-white"
-                  }`}
+                      : "bg-pink-600 dark:bg-pink-500 text-white"
+                  } transition-colors duration-300`}
                 >
                   {msg.text}
                 </div>
@@ -106,7 +192,7 @@ function ChatBot() {
                 <button
                   key={idx}
                   onClick={() => handleSend(qa.q)}
-                  className="px-3 py-1 rounded-full bg-pink-50 dark:bg-pink-900/30 text-pink-600 dark:text-pink-300 text-xs font-medium hover:bg-pink-100 dark:hover:bg-pink-800 transition"
+                  className="px-3 py-1 rounded-full bg-pink-50 dark:bg-pink-900/30 text-pink-600 dark:text-pink-300 text-xs font-medium hover:bg-pink-100 dark:hover:bg-pink-800 transition-colors duration-300"
                 >
                   {qa.q}
                 </button>
@@ -124,11 +210,11 @@ function ChatBot() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Type your question..."
-                className="flex-1 px-3 py-2 rounded-full border border-pink-200 dark:border-pink-800 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-pink-500 outline-none"
+                className="flex-1 px-3 py-2 rounded-full border border-pink-200 dark:border-pink-800 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-pink-500 outline-none transition-colors duration-300"
               />
               <button
                 type="submit"
-                className="px-4 py-2 rounded-full bg-pink-600 text-white font-semibold hover:bg-pink-700 transition"
+                className="px-4 py-2 rounded-full bg-pink-600 dark:bg-pink-500 text-white font-semibold hover:bg-pink-700 dark:hover:bg-pink-600 transition-colors duration-300"
               >
                 Send
               </button>
@@ -170,7 +256,7 @@ function HeroBlobs() {
           scale: [1, 1.08, 1],
         }}
         transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-        className="absolute top-[-120px] left-[-120px] w-[340px] h-[340px] bg-gradient-to-br from-pink-300 via-pink-100 to-white opacity-40 rounded-full blur-3xl mix-blend-multiply"
+        className="absolute top-[-120px] left-[-120px] w-[340px] h-[340px] bg-gradient-to-br from-pink-300/40 via-pink-100/40 to-white/40 dark:from-pink-600/30 dark:via-pink-400/30 dark:to-pink-200/30 rounded-full blur-3xl mix-blend-multiply"
         style={{ filter: "blur(60px)" }}
       />
       <motion.div
@@ -313,7 +399,7 @@ function HeroBlobs() {
         }}
         className="absolute top-1/4 w-32"
       >
-        <div className="text-pink-400/30 font-light text-sm tracking-wider backdrop-blur-sm">
+        <div className="text-pink-400/30 dark:text-pink-300/40 font-light text-sm tracking-wider backdrop-blur-sm">
           Content Creator
         </div>
       </motion.div>
@@ -493,7 +579,7 @@ export default function Home() {
   }, []);
 
   return (
-    <>
+    <ThemeProvider>
       <AnimatePresence mode="wait">
         {isLoading && (
           <LoadingIntro onLoadingComplete={() => setIsLoading(false)} />
@@ -504,8 +590,9 @@ export default function Home() {
         initial={{ opacity: 0 }}
         animate={{ opacity: isLoading ? 0 : 1 }}
         transition={{ duration: 0.5 }}
-        className="min-h-screen pt-16"
+        className="min-h-screen pt-16 bg-white dark:bg-gray-900 transition-colors duration-300"
       >
+        <ThemeToggle />
         {/* Hero Section */}
         <section className="relative h-[90vh] flex items-center justify-center bg-gradient-to-b from-white to-pink-50 dark:from-gray-900 dark:to-pink-950/20 overflow-hidden">
           {/* Interactive Animated Blobs & Parallax */}
@@ -568,7 +655,7 @@ export default function Home() {
         </section>
 
         {/* Featured Work Section */}
-        <section className="py-20 bg-gradient-to-b from-pink-50 to-white dark:from-pink-950/20 dark:to-gray-900">
+        <section className="py-20 bg-gradient-to-b from-pink-50 to-white dark:from-pink-950/20 dark:to-gray-900 transition-colors duration-300">
           <div className="container mx-auto px-4">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -603,7 +690,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-pink-100 dark:border-pink-900/50 hover:shadow-lg transition-shadow hover:border-pink-200 dark:hover:border-pink-800"
+                  className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-pink-100 dark:border-pink-900/50 hover:shadow-lg transition-all duration-300 hover:border-pink-200 dark:hover:border-pink-800"
                 >
                   <h3 className="text-xl font-semibold mb-2 text-pink-600 dark:text-pink-400">
                     {project.title}
@@ -621,7 +708,7 @@ export default function Home() {
         </section>
 
         {/* Podcast Showcase Section */}
-        <section className="py-20 bg-white dark:bg-gray-900">
+        <section className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
           <div className="container mx-auto px-4">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -718,7 +805,7 @@ export default function Home() {
         )}
 
         {/* About Preview Section */}
-        <section className="py-20 bg-white dark:bg-gray-900">
+        <section className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center gap-10 text-center md:text-left">
               {/* Personal Image */}
@@ -764,7 +851,10 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 }}
                 >
-                  <Link href="/about" className="btn-primary">
+                  <Link
+                    href="/about"
+                    className="px-8 py-3 rounded-full bg-gradient-to-r from-pink-600 to-fuchsia-500 dark:from-pink-500 dark:to-fuchsia-400 text-white font-semibold shadow-lg hover:scale-105 hover:shadow-pink-300/40 dark:hover:shadow-pink-500/40 transition-all duration-300"
+                  >
                     Learn More About Me
                   </Link>
                 </motion.div>
@@ -869,6 +959,6 @@ export default function Home() {
 
         <ChatBot />
       </motion.div>
-    </>
+    </ThemeProvider>
   );
 }
