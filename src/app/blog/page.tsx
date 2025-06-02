@@ -2,55 +2,81 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useState } from "react";
+
+interface BlogPost {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  category: string;
+  readTime: string;
+  image: string;
+}
+
+// Mock blog data - In a real app, this would come from an API or CMS
+const blogPosts: BlogPost[] = [
+  {
+    slug: "digital-storytelling-tips",
+    title: "Mastering Digital Storytelling: Tips for Content Creators",
+    excerpt:
+      "Learn essential techniques for creating compelling digital narratives that engage and inspire your audience.",
+    date: "March 15, 2024",
+    category: "Content Creation",
+    readTime: "8 min read",
+    image:
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop",
+  },
+  {
+    slug: "podcast-production-guide",
+    title: "The Complete Guide to Podcast Production",
+    excerpt:
+      "A comprehensive guide to producing professional-quality podcasts, from equipment setup to post-production.",
+    date: "March 10, 2024",
+    category: "Podcasting",
+    readTime: "12 min read",
+    image:
+      "https://images.unsplash.com/photo-1589903308904-1010c2294adc?q=80&w=2070&auto=format&fit=crop",
+  },
+  {
+    slug: "e-learning-content-strategies",
+    title: "Effective Strategies for E-Learning Content Development",
+    excerpt:
+      "Discover proven methods for creating engaging and effective e-learning content that maximizes student engagement.",
+    date: "March 5, 2024",
+    category: "E-Learning",
+    readTime: "10 min read",
+    image:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop",
+  },
+  {
+    slug: "journalism-in-digital-age",
+    title: "Journalism in the Digital Age: Adapting to New Media",
+    excerpt:
+      "How traditional journalism is evolving in the digital era and what it means for content creators.",
+    date: "February 28, 2024",
+    category: "Journalism",
+    readTime: "9 min read",
+    image:
+      "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=2070&auto=format&fit=crop",
+  },
+];
+
+const categories: string[] = [
+  "All",
+  "Content Creation",
+  "Podcasting",
+  "E-Learning",
+  "Journalism",
+];
 
 export default function Blog() {
-  const blogPosts = [
-    {
-      title: "The Future of Digital Education in Ethiopia",
-      excerpt:
-        "Exploring the growing trends and opportunities in digital education across Ethiopia, and how it's transforming traditional learning methods.",
-      date: "March 15, 2024",
-      category: "Education",
-      readTime: "5 min read",
-      image: "/images/blog/education.jpg",
-    },
-    {
-      title: "Storytelling in the Digital Age",
-      excerpt:
-        "How modern technology is reshaping the art of storytelling and creating new opportunities for content creators.",
-      date: "March 10, 2024",
-      category: "Content Creation",
-      readTime: "4 min read",
-      image: "/images/blog/storytelling.jpg",
-    },
-    {
-      title: "The Power of Podcasting",
-      excerpt:
-        "A deep dive into the impact of podcasting as a medium for education and entertainment in today's digital landscape.",
-      date: "March 5, 2024",
-      category: "Media",
-      readTime: "6 min read",
-      image: "/images/blog/podcasting.jpg",
-    },
-    {
-      title: "Content Strategy for E-learning",
-      excerpt:
-        "Best practices and strategies for creating engaging and effective e-learning content that resonates with students.",
-      date: "February 28, 2024",
-      category: "E-learning",
-      readTime: "7 min read",
-      image: "/images/blog/elearning.jpg",
-    },
-  ];
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
-  const categories = [
-    "All Posts",
-    "Education",
-    "Content Creation",
-    "Media",
-    "E-learning",
-    "Digital Trends",
-  ];
+  const filteredPosts =
+    selectedCategory === "All"
+      ? blogPosts
+      : blogPosts.filter((post) => post.category === selectedCategory);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-pink-50 dark:from-gray-900 dark:to-pink-950/20">
@@ -79,11 +105,12 @@ export default function Blog() {
             transition={{ delay: 0.2 }}
             className="flex flex-wrap justify-center gap-4 mb-12"
           >
-            {categories.map((category, index) => (
+            {categories.map((category: string) => (
               <button
                 key={category}
+                onClick={() => setSelectedCategory(category)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                  index === 0
+                  selectedCategory === category
                     ? "bg-pink-600 text-white"
                     : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-pink-50 dark:hover:bg-pink-900/20"
                 }`}
@@ -95,48 +122,58 @@ export default function Blog() {
 
           {/* Blog Posts Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {blogPosts.map((post, index) => (
-              <motion.article
-                key={index}
+            {filteredPosts.map((post: BlogPost, index: number) => (
+              <motion.div
+                key={post.slug}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-pink-100 dark:border-pink-900/50 hover:shadow-xl transition-shadow"
+                className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
-                <div className="aspect-video bg-pink-100 dark:bg-pink-900/50 relative">
-                  {/* Placeholder for blog image */}
-                  <div className="absolute inset-0 flex items-center justify-center text-pink-500">
-                    <span className="text-4xl">📝</span>
+                <Link href={`/blog/${post.slug}`}>
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute bottom-4 left-4">
+                      <span className="px-3 py-1 bg-pink-600 text-white text-sm rounded-full">
+                        {post.category}
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-4 mb-4">
-                    <span className="px-3 py-1 bg-pink-100 dark:bg-pink-900/50 text-pink-600 dark:text-pink-400 rounded-full text-sm">
-                      {post.category}
-                    </span>
-                    <span className="text-sm text-gray-500 dark:text-gray-400">
-                      {post.readTime}
-                    </span>
+                  <div className="p-6">
+                    <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-300 mb-3">
+                      <span>{post.date}</span>
+                      <span>•</span>
+                      <span>{post.readTime}</span>
+                    </div>
+                    <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 hover:text-pink-600 dark:hover:text-pink-400 transition-colors">
+                      {post.title}
+                    </h2>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4">
+                      {post.excerpt}
+                    </p>
+                    <div className="flex items-center text-pink-600 dark:text-pink-400 font-medium">
+                      Read More
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5 ml-2"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </div>
                   </div>
-                  <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-3">
-                    {post.title}
-                  </h2>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">
-                    {post.excerpt}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-500 dark:text-gray-400">
-                      {post.date}
-                    </span>
-                    <Link
-                      href="#"
-                      className="text-pink-600 dark:text-pink-400 hover:text-pink-700 dark:hover:text-pink-300 font-medium"
-                    >
-                      Read More →
-                    </Link>
-                  </div>
-                </div>
-              </motion.article>
+                </Link>
+              </motion.div>
             ))}
           </div>
         </motion.div>
