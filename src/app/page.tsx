@@ -108,6 +108,10 @@ const chatbotQA = [
     q: "Show me Tigist's portfolio.",
     a: "You can view Tigist's featured work and portfolio by clicking the 'View My Work' button on the landing page or visiting the Portfolio section.",
   },
+  {
+    q: "Is Tigist single?",
+    a: "🤔 Well, that's a complicated question! Let's just say Tigist is currently in a committed relationship with her work, her passion for storytelling, and her endless creativity. 💝 She's married to her craft, and her projects are her children! 📚🎙️✨ (But seriously, that's not really any of our business, is it? 😉)",
+  },
 ];
 
 function ChatBot() {
