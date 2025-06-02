@@ -516,10 +516,10 @@ export default function Home() {
         initial={{ opacity: 0 }}
         animate={{ opacity: isLoading ? 0 : 1 }}
         transition={{ duration: 0.5 }}
-        className="min-h-screen pt-16 bg-white dark:bg-gray-900 transition-colors duration-300"
+        className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300"
       >
         {/* Hero Section */}
-        <section className="relative h-[90vh] flex items-center justify-center bg-gradient-to-b from-white to-[#3d4c41]/10 dark:from-gray-900 dark:to-[#3d4c41]/20 overflow-hidden">
+        <section className="relative min-h-[calc(100vh-4rem)] mt-16 flex items-center justify-center bg-gradient-to-b from-white to-[#3d4c41]/10 dark:from-gray-900 dark:to-[#3d4c41]/20 overflow-hidden">
           {/* Interactive Animated Blobs & Parallax */}
           <HeroBlobs />
           <div className="container mx-auto px-4 z-10 flex flex-col md:flex-row items-center justify-center gap-12">
@@ -874,7 +874,7 @@ export default function Home() {
               by joining Tigist&apos;s Telegram community.
             </p>
             <a
-              href="https://t.me/yourtelegramchannel" // Replace with actual Telegram link
+              href="https://t.me/+QmFrtg1HwSw2YzNk" // Replace with actual Telegram link
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 px-8 py-3 rounded-full bg-gradient-to-r from-[#3d4c41] to-[#4d5c51] text-white font-semibold shadow-lg hover:scale-105 hover:shadow-[#3d4c41]/40 transition-transform duration-200 border-2 border-[#3d4c41]/30 text-lg"
