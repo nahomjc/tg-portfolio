@@ -193,6 +193,265 @@ function HeroBlobs() {
         className="absolute top-10 left-10 w-40 h-40 bg-pink-400 opacity-80 rounded-full"
         style={{ filter: "none" }}
       />
+
+      {/* Floating Elements */}
+      <motion.div
+        initial={{ x: "100vw", opacity: 0 }}
+        animate={{ x: "-100vw", opacity: [0, 1, 1, 0] }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: "linear",
+          times: [0, 0.1, 0.9, 1],
+        }}
+        className="absolute top-1/4 w-24 h-24"
+      >
+        <div className="w-full h-full bg-pink-200/20 rounded-full backdrop-blur-sm border border-pink-300/30 shadow-lg" />
+      </motion.div>
+
+      <motion.div
+        initial={{ x: "100vw", opacity: 0 }}
+        animate={{ x: "-100vw", opacity: [0, 1, 1, 0] }}
+        transition={{
+          duration: 25,
+          repeat: Infinity,
+          ease: "linear",
+          times: [0, 0.1, 0.9, 1],
+          delay: 5,
+        }}
+        className="absolute top-1/3 w-16 h-16"
+      >
+        <div className="w-full h-full bg-fuchsia-200/20 rounded-full backdrop-blur-sm border border-fuchsia-300/30 shadow-lg" />
+      </motion.div>
+
+      <motion.div
+        initial={{ x: "100vw", opacity: 0 }}
+        animate={{ x: "-100vw", opacity: [0, 1, 1, 0] }}
+        transition={{
+          duration: 30,
+          repeat: Infinity,
+          ease: "linear",
+          times: [0, 0.1, 0.9, 1],
+          delay: 10,
+        }}
+        className="absolute top-2/3 w-20 h-20"
+      >
+        <div className="w-full h-full bg-pink-300/20 rounded-full backdrop-blur-sm border border-pink-400/30 shadow-lg" />
+      </motion.div>
+
+      {/* Floating Icons */}
+      <motion.div
+        initial={{ x: "100vw", opacity: 0 }}
+        animate={{ x: "-100vw", opacity: [0, 1, 1, 0] }}
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: "linear",
+          times: [0, 0.1, 0.9, 1],
+          delay: 2,
+        }}
+        className="absolute top-1/2 w-12 h-12"
+      >
+        <div className="w-full h-full flex items-center justify-center text-pink-400/40">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-8 h-8"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"
+            />
+          </svg>
+        </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ x: "100vw", opacity: 0 }}
+        animate={{ x: "-100vw", opacity: [0, 1, 1, 0] }}
+        transition={{
+          duration: 18,
+          repeat: Infinity,
+          ease: "linear",
+          times: [0, 0.1, 0.9, 1],
+          delay: 7,
+        }}
+        className="absolute top-2/5 w-12 h-12"
+      >
+        <div className="w-full h-full flex items-center justify-center text-fuchsia-400/40">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-8 h-8"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605"
+            />
+          </svg>
+        </div>
+      </motion.div>
+
+      {/* Floating Text Elements */}
+      <motion.div
+        initial={{ x: "100vw", opacity: 0 }}
+        animate={{ x: "-100vw", opacity: [0, 1, 1, 0] }}
+        transition={{
+          duration: 25,
+          repeat: Infinity,
+          ease: "linear",
+          times: [0, 0.1, 0.9, 1],
+          delay: 3,
+        }}
+        className="absolute top-1/4 w-32"
+      >
+        <div className="text-pink-400/30 font-light text-sm tracking-wider backdrop-blur-sm">
+          Content Creator
+        </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ x: "100vw", opacity: 0 }}
+        animate={{ x: "-100vw", opacity: [0, 1, 1, 0] }}
+        transition={{
+          duration: 28,
+          repeat: Infinity,
+          ease: "linear",
+          times: [0, 0.1, 0.9, 1],
+          delay: 8,
+        }}
+        className="absolute top-3/4 w-32"
+      >
+        <div className="text-fuchsia-400/30 font-light text-sm tracking-wider backdrop-blur-sm">
+          Digital Storyteller
+        </div>
+      </motion.div>
+
+      {/* Additional Floating Icons */}
+      <motion.div
+        initial={{ x: "100vw", opacity: 0 }}
+        animate={{ x: "-100vw", opacity: [0, 1, 1, 0] }}
+        transition={{
+          duration: 22,
+          repeat: Infinity,
+          ease: "linear",
+          times: [0, 0.1, 0.9, 1],
+          delay: 4,
+        }}
+        className="absolute top-1/3 w-12 h-12"
+      >
+        <div className="w-full h-full flex items-center justify-center text-pink-400/40">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-8 h-8"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
+            />
+          </svg>
+        </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ x: "100vw", opacity: 0 }}
+        animate={{ x: "-100vw", opacity: [0, 1, 1, 0] }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: "linear",
+          times: [0, 0.1, 0.9, 1],
+          delay: 6,
+        }}
+        className="absolute top-2/3 w-12 h-12"
+      >
+        <div className="w-full h-full flex items-center justify-center text-fuchsia-400/40">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-8 h-8"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
+            />
+          </svg>
+        </div>
+      </motion.div>
+
+      {/* Floating Decorative Elements */}
+      <motion.div
+        initial={{ x: "100vw", opacity: 0 }}
+        animate={{ x: "-100vw", opacity: [0, 1, 1, 0] }}
+        transition={{
+          duration: 35,
+          repeat: Infinity,
+          ease: "linear",
+          times: [0, 0.1, 0.9, 1],
+          delay: 12,
+        }}
+        className="absolute top-1/2 w-16 h-16"
+      >
+        <div className="w-full h-full border-2 border-pink-300/20 rounded-lg rotate-45 backdrop-blur-sm" />
+      </motion.div>
+
+      <motion.div
+        initial={{ x: "100vw", opacity: 0 }}
+        animate={{ x: "-100vw", opacity: [0, 1, 1, 0] }}
+        transition={{
+          duration: 32,
+          repeat: Infinity,
+          ease: "linear",
+          times: [0, 0.1, 0.9, 1],
+          delay: 15,
+        }}
+        className="absolute top-1/4 w-14 h-14"
+      >
+        <div className="w-full h-full border-2 border-fuchsia-300/20 rounded-full backdrop-blur-sm" />
+      </motion.div>
+
+      {/* Subtle Background Lines */}
+      <motion.div
+        initial={{ x: "100vw", opacity: 0 }}
+        animate={{ x: "-100vw", opacity: [0, 0.1, 0.1, 0] }}
+        transition={{
+          duration: 40,
+          repeat: Infinity,
+          ease: "linear",
+          times: [0, 0.1, 0.9, 1],
+        }}
+        className="absolute top-1/2 w-full h-px bg-gradient-to-r from-transparent via-pink-300/10 to-transparent"
+      />
+
+      <motion.div
+        initial={{ x: "100vw", opacity: 0 }}
+        animate={{ x: "-100vw", opacity: [0, 0.1, 0.1, 0] }}
+        transition={{
+          duration: 45,
+          repeat: Infinity,
+          ease: "linear",
+          times: [0, 0.1, 0.9, 1],
+          delay: 20,
+        }}
+        className="absolute top-2/3 w-full h-px bg-gradient-to-r from-transparent via-fuchsia-300/10 to-transparent"
+      />
     </div>
   );
 }
