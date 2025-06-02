@@ -53,12 +53,16 @@ const Navbar = () => {
                 <span className="absolute left-0 bottom-0 w-full h-0.5 bg-gradient-to-r from-[#3d4c41] to-[#4d5c51] rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left z-0" />
               </Link>
             ))}
-            <ThemeToggle />
+            <div className="ml-4">
+              <ThemeToggle />
+            </div>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-2">
-            <ThemeToggle />
+            <div className="mr-2">
+              <ThemeToggle />
+            </div>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-[#3d4c41] dark:text-[#4d5c51] hover:text-[#2d3c31] dark:hover:text-[#3d4c41] focus:outline-none"

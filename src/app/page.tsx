@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import LoadingIntro from "./components/LoadingIntro";
 import Link from "next/link";
 import React from "react";
-import { ThemeProvider } from "./components/ThemeLayout";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 // Chatbot Q&A data
 const chatbotQA = [

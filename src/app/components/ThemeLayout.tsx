@@ -1,53 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState, useEffect, createContext, useContext } from "react";
+import { useTheme } from "next-themes";
 
-// Theme context and provider
-export const ThemeContext = createContext({
-  theme: "light",
-  toggleTheme: () => {},
-});
-
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState("light");
-
-  useEffect(() => {
-    // Check for saved theme preference or system preference
-    const savedTheme = localStorage.getItem("theme");
-    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-      .matches
-      ? "dark"
-      : "light";
-    setTheme(savedTheme || systemTheme);
-  }, []);
-
-  useEffect(() => {
-    // Update document class and save preference
-    document.documentElement.classList.remove("light", "dark");
-    document.documentElement.classList.add(theme);
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  };
-
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
-}
-
-// Theme toggle button component
 export function ThemeToggle() {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { theme, setTheme } = useTheme();
 
   return (
     <motion.button
-      onClick={toggleTheme}
-      className="fixed top-4 right-4 z-50 p-2 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-pink-200 dark:border-pink-800 shadow-lg hover:scale-110 transition-transform"
+      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+      className="p-2 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-[#3d4c41]/20 dark:border-[#3d4c41]/40 shadow-lg hover:scale-110 transition-transform"
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
@@ -59,7 +21,7 @@ export function ThemeToggle() {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6 text-gray-800"
+          className="w-6 h-6 text-[#3d4c41]"
         >
           <path
             strokeLinecap="round"
@@ -74,7 +36,7 @@ export function ThemeToggle() {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6 text-yellow-300"
+          className="w-6 h-6 text-[#4d5c51]"
         >
           <path
             strokeLinecap="round"
