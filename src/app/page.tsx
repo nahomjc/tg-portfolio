@@ -512,6 +512,76 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Interview Video Section */}
+        <section className="py-20 bg-gradient-to-b from-pink-50 to-white dark:from-pink-950/20 dark:to-gray-900">
+          <div className="container mx-auto px-4 flex flex-col items-center">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-3xl md:text-4xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-pink-400 dark:from-pink-400 dark:to-pink-300"
+            >
+              New Interview: Behind the Camera
+            </motion.h2>
+            <div className="w-full max-w-2xl rounded-2xl overflow-hidden shadow-xl border-2 border-pink-100 dark:border-pink-900/40 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl mb-8">
+              <video
+                controls
+                preload="metadata"
+                playsInline
+                poster="/personla-image/1747396061958.jpg"
+                className="w-full h-72 md:h-96 object-cover bg-black"
+                onError={(e) => {
+                  console.error("Video error:", e);
+                  const videoElement = e.target as HTMLVideoElement;
+                  console.error("Video error code:", videoElement.error?.code);
+                }}
+              >
+                <source src="/video/keyezerfu.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-xl text-center mb-4">
+              Watch Tigist Fiseha&apos;s latest interview about her journey and
+              passion for cinematography.
+            </p>
+          </div>
+        </section>
+
+        {/* Telegram Join Section */}
+        <section className="py-16 bg-white dark:bg-gray-900">
+          <div className="container mx-auto px-4 flex flex-col items-center">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-3xl md:text-4xl font-bold mb-4 text-center text-pink-600 dark:text-pink-400"
+            >
+              Join Tigist on Telegram
+            </motion.h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-xl text-center mb-6">
+              Stay updated with the latest news, podcasts, and exclusive content
+              by joining Tigist&apos;s Telegram community.
+            </p>
+            <a
+              href="https://t.me/yourtelegramchannel" // Replace with actual Telegram link
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 px-8 py-3 rounded-full bg-gradient-to-r from-pink-600 to-fuchsia-500 text-white font-semibold shadow-lg hover:scale-105 hover:shadow-pink-300/40 transition-transform duration-200 border-2 border-pink-400/30 text-lg"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="w-7 h-7 text-white"
+              >
+                <path d="M9.036 16.927c-.38 0-.314-.144-.446-.504l-1.11-3.662 8.548-5.073c.377-.214.655.051.502.4l-2.06 6.44c-.143.41-.366.513-.744.32l-2.062-1.353-1 .963c-.099.098-.183.183-.37.183zm-1.36-4.13l.85 2.8c.07.23.13.32.28.32.15 0 .21-.09.28-.32l.85-2.8-2.26-1.34zm10.324-7.13c-1.13-1.13-2.64-1.13-3.77 0l-8.49 8.49c-1.13 1.13-1.13 2.64 0 3.77 1.13 1.13 2.64 1.13 3.77 0l8.49-8.49c1.13-1.13 1.13-2.64 0-3.77z" />
+              </svg>
+              Join Telegram
+            </a>
+          </div>
+        </section>
+
         <ChatBot />
       </motion.div>
     </>
