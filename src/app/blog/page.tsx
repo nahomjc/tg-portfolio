@@ -79,7 +79,7 @@ export default function Blog() {
       : blogPosts.filter((post) => post.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-pink-50 dark:from-gray-900 dark:to-pink-950/20">
+    <div className="min-h-screen bg-gradient-to-b from-white to-[#3d4c41]/10 dark:from-gray-900 dark:to-[#3d4c41]/20">
       <main className="max-w-6xl mx-auto px-4 py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -89,7 +89,7 @@ export default function Blog() {
         >
           {/* Header */}
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-pink-400 dark:from-pink-400 dark:to-pink-300">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#3d4c41] to-[#2d3c31] dark:from-[#4d5c51] dark:to-[#3d4c41]">
               Blog
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
@@ -111,8 +111,8 @@ export default function Blog() {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                   selectedCategory === category
-                    ? "bg-pink-600 text-white"
-                    : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-pink-50 dark:hover:bg-pink-900/20"
+                    ? "bg-[#3d4c41] text-white"
+                    : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-[#3d4c41]/10 dark:hover:bg-[#3d4c41]/30"
                 }`}
               >
                 {category}
@@ -139,7 +139,7 @@ export default function Blog() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     <div className="absolute bottom-4 left-4">
-                      <span className="px-3 py-1 bg-pink-600 text-white text-sm rounded-full">
+                      <span className="px-3 py-1 bg-[#3d4c41] text-white text-sm rounded-full">
                         {post.category}
                       </span>
                     </div>
@@ -150,13 +150,13 @@ export default function Blog() {
                       <span>•</span>
                       <span>{post.readTime}</span>
                     </div>
-                    <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 hover:text-pink-600 dark:hover:text-pink-400 transition-colors">
+                    <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 hover:text-[#3d4c41] dark:hover:text-[#4d5c51] transition-colors">
                       {post.title}
                     </h2>
                     <p className="text-gray-600 dark:text-gray-300 mb-4">
                       {post.excerpt}
                     </p>
-                    <div className="flex items-center text-pink-600 dark:text-pink-400 font-medium">
+                    <div className="flex items-center text-[#3d4c41] dark:text-[#4d5c51] font-medium">
                       Read More
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

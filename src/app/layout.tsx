@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "./components/ThemeLayout";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Tigist Fiseha - Portfolio",
+  title: "Tigist Fiseha - Content Creator & Educator",
   description:
-    "Portfolio of Tigist Fiseha, Script Writer, Journalist, E-learning Content Developer, and Podcaster based in Addis Ababa, Ethiopia.",
+    "Portfolio website of Tigist Fiseha, a content creator and educator based in Ethiopia.",
 };
 
 export default function RootLayout({
@@ -21,11 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThemeProvider>
-          <Navbar />
-          {children}
-          <Footer />
-        </ThemeProvider>
+        <Navbar />
+        {children}
+        <Footer />
       </body>
     </html>
   );

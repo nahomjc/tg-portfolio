@@ -49,7 +49,7 @@ export default function Portfolio() {
     "Podcasting",
   ];
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-pink-50 dark:from-gray-900 dark:to-pink-950/20">
+    <div className="min-h-screen bg-gradient-to-b from-white to-[#3d4c41]/10 dark:from-gray-900 dark:to-[#3d4c41]/20">
       <main className="max-w-6xl mx-auto px-4 py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -59,7 +59,7 @@ export default function Portfolio() {
         >
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-pink-400 dark:from-pink-400 dark:to-pink-300">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-[#3d4c41] to-[#2d3c31] dark:from-[#4d5c51] dark:to-[#3d4c41]">
               My Portfolio
             </h1>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-4">
@@ -71,10 +71,10 @@ export default function Portfolio() {
               {categories.map((cat, idx) => (
                 <button
                   key={cat}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border-2 border-pink-200 dark:border-pink-900/40 ${
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border-2 border-[#3d4c41]/20 dark:border-[#3d4c41]/40 ${
                     idx === 0
-                      ? "bg-pink-600 text-white"
-                      : "bg-white/80 dark:bg-gray-900/60 text-pink-600 dark:text-pink-300 hover:bg-pink-50 dark:hover:bg-pink-900/20"
+                      ? "bg-[#3d4c41] text-white"
+                      : "bg-white/80 dark:bg-gray-900/60 text-[#3d4c41] dark:text-[#4d5c51] hover:bg-[#3d4c41]/10 dark:hover:bg-[#3d4c41]/20"
                   }`}
                   disabled={idx === 0}
                 >
@@ -92,10 +92,10 @@ export default function Portfolio() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="relative bg-white/80 dark:bg-gray-800/80 rounded-2xl overflow-hidden shadow-xl border-2 border-pink-100 dark:border-pink-900/40 backdrop-blur-xl hover:scale-105 hover:shadow-pink-200/40 transition-transform duration-300 group"
+                className="relative bg-white/80 dark:bg-gray-800/80 rounded-2xl overflow-hidden shadow-xl border-2 border-[#3d4c41]/20 dark:border-[#3d4c41]/40 backdrop-blur-xl hover:scale-105 hover:shadow-[#3d4c41]/40 transition-transform duration-300 group"
               >
                 {/* Project Image */}
-                <div className="aspect-video bg-pink-100 dark:bg-pink-900/50 relative overflow-hidden">
+                <div className="aspect-video bg-[#3d4c41]/10 dark:bg-[#3d4c41]/50 relative overflow-hidden">
                   {project.image ? (
                     <img
                       src={project.image}
@@ -103,16 +103,16 @@ export default function Portfolio() {
                       className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
                     />
                   ) : (
-                    <div className="absolute inset-0 flex items-center justify-center text-pink-500">
+                    <div className="absolute inset-0 flex items-center justify-center text-[#3d4c41]">
                       <span className="text-4xl">📸</span>
                     </div>
                   )}
-                  <div className="absolute top-2 left-2 px-3 py-1 bg-pink-100 dark:bg-pink-900/60 text-pink-600 dark:text-pink-300 rounded-full text-xs font-semibold shadow">
+                  <div className="absolute top-2 left-2 px-3 py-1 bg-[#3d4c41]/10 dark:bg-[#3d4c41]/60 text-[#3d4c41] dark:text-[#4d5c51] rounded-full text-xs font-semibold shadow">
                     {project.category}
                   </div>
                 </div>
                 <div className="p-6 flex flex-col h-full">
-                  <h3 className="text-xl font-semibold text-pink-600 dark:text-pink-400 mb-2">
+                  <h3 className="text-xl font-semibold text-[#3d4c41] dark:text-[#4d5c51] mb-2">
                     {project.title}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-4 flex-1">
@@ -122,7 +122,7 @@ export default function Portfolio() {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2 py-1 bg-pink-50 dark:bg-pink-900/30 text-pink-600 dark:text-pink-300 rounded text-xs font-medium"
+                        className="px-2 py-1 bg-[#3d4c41]/10 dark:bg-[#3d4c41]/30 text-[#3d4c41] dark:text-[#4d5c51] rounded text-xs font-medium"
                       >
                         {tag}
                       </span>
