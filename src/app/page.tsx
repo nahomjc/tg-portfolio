@@ -821,7 +821,7 @@ export default function Home() {
                 className="w-40 h-40 md:w-56 md:h-56 rounded-3xl overflow-hidden shadow-xl border-4 border-pink-200 dark:border-pink-500 bg-white/40 dark:bg-pink-900/30 backdrop-blur-lg flex-shrink-0 mb-8 md:mb-0"
               >
                 <img
-                  src="/personla-image/1747396061958.jpg"
+                  src="/personla-image/photo_2025-04-28_12-01-26.jpg"
                   alt="Tigist Fiseha personal"
                   className="w-full h-full object-cover object-center rounded-3xl"
                 />
@@ -848,6 +848,16 @@ export default function Home() {
                   Ababa, Ethiopia, I combine my expertise in journalism, script
                   writing, and e-learning to create impactful content that
                   educates and inspires.
+                </motion.p>
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.15 }}
+                  className="text-base text-pink-700 dark:text-pink-300 mb-6 font-semibold"
+                >
+                  Yourself comes first—taking care of yourself is the foundation
+                  for everything else. ��
                 </motion.p>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
