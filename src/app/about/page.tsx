@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function About() {
@@ -70,7 +69,7 @@ export default function About() {
 
         {/* Info Cards Section */}
         <div className="grid md:grid-cols-2 gap-10">
-          {/* Personal Info Card */}
+          {/* Expertise Card */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -79,83 +78,108 @@ export default function About() {
             className="bg-white/80 dark:bg-gray-800/80 rounded-2xl p-8 shadow-xl border-2 border-pink-100 dark:border-pink-900/40 backdrop-blur-xl"
           >
             <h2 className="text-2xl font-bold mb-6 text-pink-600 dark:text-pink-400">
-              Personal Info
+              Areas of Expertise
             </h2>
-            <div className="space-y-4">
-              <div className="flex items-center space-x-3">
-                <span className="text-pink-500">📧</span>
-                <span className="text-gray-600 dark:text-gray-300">
-                  tigist@example.com
-                </span>
+            <div className="space-y-6">
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 rounded-full bg-pink-100 dark:bg-pink-900/50 flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl">📝</span>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">
+                    Script Writing
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    Crafting compelling narratives for various media platforms,
+                    focusing on engaging storytelling and audience connection.
+                  </p>
+                </div>
               </div>
-              <div className="flex items-center space-x-3">
-                <span className="text-pink-500">📱</span>
-                <span className="text-gray-600 dark:text-gray-300">
-                  +251 123 456 789
-                </span>
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 rounded-full bg-pink-100 dark:bg-pink-900/50 flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl">🎓</span>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">
+                    E-learning Development
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    Creating interactive and engaging educational content that
+                    makes learning accessible and enjoyable.
+                  </p>
+                </div>
               </div>
-              <div className="flex items-center space-x-3">
-                <span className="text-pink-500">📍</span>
-                <span className="text-gray-600 dark:text-gray-300">
-                  Addis Ababa, Ethiopia
-                </span>
-              </div>
-            </div>
-            <div className="mt-6">
-              <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">
-                Languages
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {["English", "Amharic", "Gurganna"].map((lang) => (
-                  <span
-                    key={lang}
-                    className="px-3 py-1 bg-pink-100 dark:bg-pink-900/50 text-pink-600 dark:text-pink-400 rounded-full text-sm"
-                  >
-                    {lang}
-                  </span>
-                ))}
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 rounded-full bg-pink-100 dark:bg-pink-900/50 flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl">🎙️</span>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">
+                    Podcasting
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    Producing and hosting engaging podcast content that informs,
+                    entertains, and connects with audiences.
+                  </p>
+                </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Social Links Card */}
+          {/* Achievements Card */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="bg-white/80 dark:bg-gray-800/80 rounded-2xl p-8 shadow-xl border-2 border-pink-100 dark:border-pink-900/40 backdrop-blur-xl flex flex-col justify-between"
+            className="bg-white/80 dark:bg-gray-800/80 rounded-2xl p-8 shadow-xl border-2 border-pink-100 dark:border-pink-900/40 backdrop-blur-xl"
           >
             <h2 className="text-2xl font-bold mb-6 text-pink-600 dark:text-pink-400">
-              Connect With Me
+              Notable Achievements
             </h2>
-            <div className="flex flex-wrap justify-center gap-6 mb-6">
-              <Link
-                href="https://linkedin.com/in/tigist-fiseha"
-                className="flex items-center space-x-2 px-6 py-3 bg-[#0077B5] text-white rounded-lg hover:bg-[#006399] transition-colors"
-              >
-                <span>LinkedIn</span>
-              </Link>
-              <Link
-                href="https://instagram.com/tigistfiseha"
-                className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#F77737] text-white rounded-lg hover:opacity-90 transition-opacity"
-              >
-                <span>Instagram</span>
-              </Link>
-              <Link
-                href="https://facebook.com/tigistfiseha"
-                className="flex items-center space-x-2 px-6 py-3 bg-[#1877F2] text-white rounded-lg hover:bg-[#166FE5] transition-colors"
-              >
-                <span>Facebook</span>
-              </Link>
-            </div>
-            <div className="text-center mt-auto">
-              <Link
-                href="/contact"
-                className="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-pink-600 to-fuchsia-500 text-white font-semibold shadow-lg hover:scale-105 hover:shadow-pink-300/40 transition-transform duration-200 border-2 border-pink-400/30"
-              >
-                Get in Touch
-              </Link>
+            <div className="space-y-6">
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 rounded-full bg-pink-100 dark:bg-pink-900/50 flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl">🏆</span>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">
+                    Educational Impact
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    Developed e-learning content reaching over 10,000 students,
+                    improving learning outcomes by 40%.
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 rounded-full bg-pink-100 dark:bg-pink-900/50 flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl">📈</span>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">
+                    Podcast Success
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    Grew podcast audience to 50,000+ monthly listeners, becoming
+                    one of Ethiopia&apos;s top educational podcasts.
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 rounded-full bg-pink-100 dark:bg-pink-900/50 flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl">🌟</span>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">
+                    Industry Recognition
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    Received multiple awards for outstanding contributions to
+                    digital education and content creation.
+                  </p>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
