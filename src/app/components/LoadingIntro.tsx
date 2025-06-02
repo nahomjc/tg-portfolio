@@ -13,10 +13,10 @@ const LoadingIntro = ({ onLoadingComplete }: LoadingIntroProps) => {
   const [currentStep, setCurrentStep] = useState(0);
 
   const loadingSteps = [
-    "Crafting Stories",
-    "Loading Creative Assets",
-    "Preparing Your Experience",
-    "Welcome to My World",
+    "Initializing Neural Interface",
+    "Synchronizing Digital Assets",
+    "Calibrating Experience Matrix",
+    "Establishing Connection",
   ];
 
   useEffect(() => {
@@ -46,14 +46,14 @@ const LoadingIntro = ({ onLoadingComplete }: LoadingIntroProps) => {
   }, [onLoadingComplete]);
 
   // Generate creative particles
-  const particles = Array.from({ length: 25 }, (_, i) => ({
+  const particles = Array.from({ length: 40 }, (_, i) => ({
     id: i,
     x: Math.random() * 100,
     y: Math.random() * 100,
-    size: Math.random() * 2 + 1,
-    duration: Math.random() * 3 + 2,
+    size: Math.random() * 3 + 1,
+    duration: Math.random() * 4 + 2,
     delay: Math.random() * 2,
-    color: Math.random() > 0.5 ? "#ec4899" : "#f472b6", // Pink shades
+    color: Math.random() > 0.5 ? "#00f2fe" : "#4facfe", // Cyan to blue gradient
   }));
 
   return (
@@ -62,37 +62,36 @@ const LoadingIntro = ({ onLoadingComplete }: LoadingIntroProps) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-[9999] bg-gradient-to-br from-pink-950 via-pink-900 to-pink-950 flex items-center justify-center overflow-hidden"
+        className="fixed inset-0 z-[9999] bg-gradient-to-br from-pink-950 via-fuchsia-900 to-pink-950 flex items-center justify-center overflow-hidden"
       >
-        {/* Elegant Background Pattern */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_0%,transparent_100%)] opacity-50" />
-        <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(255,255,255,0.05)_25%,transparent_25%,transparent_75%,rgba(255,255,255,0.05)_75%)] bg-[length:20px_20px]" />
+        {/* Futuristic Grid Background */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:50px_50px]" />
 
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
             animate={{
               scale: [1, 1.2, 1],
-              opacity: [0.2, 0.3, 0.2],
+              opacity: [0.1, 0.2, 0.1],
             }}
             transition={{
               duration: 4,
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl"
+            className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-pink-500/10 rounded-full blur-3xl"
           />
           <motion.div
             animate={{
               scale: [1.2, 1, 1.2],
-              opacity: [0.2, 0.3, 0.2],
+              opacity: [0.1, 0.2, 0.1],
             }}
             transition={{
               duration: 5,
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-pink-400/10 rounded-full blur-3xl"
+            className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-fuchsia-500/10 rounded-full blur-3xl"
           />
         </div>
 
@@ -104,10 +103,10 @@ const LoadingIntro = ({ onLoadingComplete }: LoadingIntroProps) => {
                 key={particle.id}
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{
-                  opacity: [0, 0.6, 0],
+                  opacity: [0, 0.8, 0],
                   scale: [0, 1, 0],
-                  x: [particle.x + "%", particle.x + 10 + "%"],
-                  y: [particle.y + "%", particle.y - 10 + "%"],
+                  x: [particle.x + "%", particle.x + 15 + "%"],
+                  y: [particle.y + "%", particle.y - 15 + "%"],
                 }}
                 transition={{
                   duration: particle.duration,
@@ -120,6 +119,7 @@ const LoadingIntro = ({ onLoadingComplete }: LoadingIntroProps) => {
                   width: particle.size,
                   height: particle.size,
                   backgroundColor: particle.color,
+                  boxShadow: `0 0 ${particle.size * 2}px ${particle.color}`,
                 }}
               />
             ))}
@@ -137,7 +137,7 @@ const LoadingIntro = ({ onLoadingComplete }: LoadingIntroProps) => {
               stiffness: 260,
               damping: 20,
             }}
-            className="w-32 h-32 mb-12 relative"
+            className="w-40 h-40 mb-12 relative"
           >
             <motion.div
               animate={{
@@ -156,12 +156,12 @@ const LoadingIntro = ({ onLoadingComplete }: LoadingIntroProps) => {
                   ease: "easeInOut",
                 },
               }}
-              className="absolute inset-0 bg-gradient-to-br from-pink-500 via-pink-400 to-pink-300 rounded-2xl shadow-2xl"
+              className="absolute inset-0 bg-gradient-to-br from-pink-500 via-fuchsia-400 to-pink-300 rounded-2xl"
               style={{
-                boxShadow: "0 0 30px rgba(236, 72, 153, 0.3)",
+                boxShadow: "0 0 40px rgba(236, 72, 153, 0.3)",
               }}
             />
-            <div className="absolute inset-0 flex items-center justify-center text-white text-4xl font-bold">
+            <div className="absolute inset-0 flex items-center justify-center text-white text-5xl font-bold tracking-wider">
               TF
             </div>
           </motion.div>
@@ -173,18 +173,18 @@ const LoadingIntro = ({ onLoadingComplete }: LoadingIntroProps) => {
             transition={{ delay: 0.5 }}
             className="text-4xl font-bold mb-12 tracking-wider"
           >
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-300 via-pink-200 to-pink-100">
-              Welcome to My Creative Space
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-300 via-fuchsia-200 to-pink-100">
+              Enter the Digital Frontier
             </span>
           </motion.div>
 
           {/* Progress Bar Container */}
-          <div className="w-96 h-2 bg-pink-900/30 rounded-full overflow-hidden mb-6 backdrop-blur-sm">
+          <div className="w-96 h-3 bg-pink-900/50 rounded-full overflow-hidden mb-6 backdrop-blur-sm border border-pink-500/20">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: `${progress}%` }}
               transition={{ duration: 0.5 }}
-              className="h-full bg-gradient-to-r from-pink-400 via-pink-300 to-pink-200 relative"
+              className="h-full bg-gradient-to-r from-pink-400 via-fuchsia-400 to-pink-300 relative"
             >
               <motion.div
                 animate={{
@@ -195,7 +195,7 @@ const LoadingIntro = ({ onLoadingComplete }: LoadingIntroProps) => {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute inset-0 bg-white/20"
+                className="absolute inset-0 bg-white/30"
               />
             </motion.div>
           </div>
@@ -204,13 +204,13 @@ const LoadingIntro = ({ onLoadingComplete }: LoadingIntroProps) => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-sm text-pink-200 mb-10"
+            className="text-sm text-pink-200 mb-10 font-mono"
           >
             {progress}%
           </motion.div>
 
           {/* Loading Steps */}
-          <div className="space-y-3">
+          <div className="space-y-4">
             {loadingSteps.map((step, index) => (
               <motion.div
                 key={step}
@@ -220,7 +220,7 @@ const LoadingIntro = ({ onLoadingComplete }: LoadingIntroProps) => {
                   x: currentStep >= index ? 0 : -20,
                 }}
                 transition={{ delay: index * 0.1 }}
-                className="flex items-center space-x-3 text-pink-100"
+                className="flex items-center space-x-4 text-pink-100"
               >
                 <motion.div
                   animate={{
@@ -232,13 +232,11 @@ const LoadingIntro = ({ onLoadingComplete }: LoadingIntroProps) => {
                   }}
                   className={`w-2 h-2 rounded-full ${
                     currentStep >= index
-                      ? "bg-gradient-to-r from-pink-300 to-pink-200"
+                      ? "bg-gradient-to-r from-pink-300 to-fuchsia-300"
                       : "bg-pink-800"
                   }`}
                 />
-                <span className="text-sm tracking-wider font-light">
-                  {step}
-                </span>
+                <span className="text-sm tracking-wider font-mono">{step}</span>
               </motion.div>
             ))}
           </div>
