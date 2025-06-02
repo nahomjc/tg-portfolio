@@ -74,10 +74,16 @@ function ChatBot() {
       {/* Floating Chat Button */}
       <button
         onClick={() => setOpen((o) => !o)}
-        className="fixed z-[9999] bottom-6 right-6 bg-[#3d4c41] hover:bg-[#2d3c31] dark:bg-[#4d5c51] dark:hover:bg-[#3d4c41] text-white rounded-full shadow-lg w-16 h-16 flex items-center justify-center text-3xl focus:outline-none transition-colors duration-300"
+        className="fixed z-[9999] bottom-6 right-6 bg-[#3d4c41] hover:bg-[#2d3c31] dark:bg-[#4d5c51] dark:hover:bg-[#3d4c41] text-white rounded-full shadow-lg w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center text-3xl sm:text-4xl focus:outline-none transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-[#3d4c41]/50 animate-pulse-slow border-4 border-white/20 dark:border-white/10"
         aria-label={open ? "Close chat" : "Open chat"}
       >
-        {open ? "×" : <span className="font-bold">💬</span>}
+        {open ? (
+          "×"
+        ) : (
+          <span className="font-bold transform hover:scale-110 transition-transform">
+            💬
+          </span>
+        )}
       </button>
       {/* Chat Window */}
       {open && (
@@ -554,17 +560,17 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="flex justify-center md:justify-start gap-4"
+                className="flex flex-col sm:flex-row justify-center md:justify-start gap-4"
               >
                 <Link
                   href="/portfolio"
-                  className="px-8 py-3 rounded-full bg-gradient-to-r from-[#3d4c41] to-[#4d5c51] text-white font-semibold shadow-lg hover:scale-105 hover:shadow-[#3d4c41]/40 transition-transform duration-200 border-2 border-[#3d4c41]/30"
+                  className="px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base rounded-full bg-gradient-to-r from-[#3d4c41] to-[#4d5c51] text-white font-semibold shadow-lg hover:scale-105 hover:shadow-[#3d4c41]/40 transition-transform duration-200 border-2 border-[#3d4c41]/30"
                 >
                   View My Work
                 </Link>
                 <Link
                   href="/contact"
-                  className="px-8 py-3 rounded-full bg-white/80 dark:bg-gray-900/80 text-[#3d4c41] dark:text-[#4d5c51] font-semibold border-2 border-[#3d4c41]/30 shadow hover:bg-[#3d4c41]/10 dark:hover:bg-[#3d4c41]/40 hover:scale-105 transition-transform duration-200"
+                  className="px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base rounded-full bg-white/80 dark:bg-gray-900/80 text-[#3d4c41] dark:text-[#4d5c51] font-semibold border-2 border-[#3d4c41]/30 shadow hover:bg-[#3d4c41]/10 dark:hover:bg-[#3d4c41]/40 hover:scale-105 transition-transform duration-200"
                 >
                   Get in Touch
                 </Link>
