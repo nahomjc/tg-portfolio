@@ -9,7 +9,8 @@ export default function Portfolio() {
       description:
         "Created comprehensive educational materials for online courses, focusing on interactive learning experiences and student engagement.",
       category: "E-learning",
-      image: "/images/e-learning.jpg",
+      image:
+        "https://plus.unsplash.com/premium_photo-1720503965220-10ea698bf0aa?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       tags: ["Content Creation", "Educational Design", "Digital Learning"],
     },
     {
@@ -17,7 +18,8 @@ export default function Portfolio() {
       description:
         "Developed compelling narratives and scripts for various digital platforms, ensuring engaging storytelling and clear communication.",
       category: "Writing",
-      image: "/images/script-writing.jpg",
+      image:
+        "https://plus.unsplash.com/premium_photo-1683491155621-cd42e847d646?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       tags: ["Storytelling", "Digital Media", "Content Strategy"],
     },
     {
@@ -25,7 +27,8 @@ export default function Portfolio() {
       description:
         "Delivered impactful news coverage and reporting, maintaining high journalistic standards and engaging presentation.",
       category: "Journalism",
-      image: "/images/broadcasting.jpg",
+      image:
+        "https://images.unsplash.com/photo-1581092802858-671713398c0b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       tags: ["News Reporting", "Broadcasting", "Media Production"],
     },
     {
@@ -33,11 +36,18 @@ export default function Portfolio() {
       description:
         "Produced and hosted educational podcasts, creating engaging audio content for diverse audiences.",
       category: "Podcasting",
-      image: "/images/podcast.jpg",
+      image:
+        "https://plus.unsplash.com/premium_photo-1679079456041-732c3be113f9?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       tags: ["Audio Production", "Content Creation", "Digital Media"],
     },
   ];
-
+  const categories = [
+    "All",
+    "E-learning",
+    "Writing",
+    "Journalism",
+    "Podcasting",
+  ];
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-pink-50 dark:from-gray-900 dark:to-pink-950/20">
       <main className="max-w-6xl mx-auto px-4 py-16">
@@ -48,49 +58,71 @@ export default function Portfolio() {
           className="space-y-12"
         >
           {/* Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-pink-400 dark:from-pink-400 dark:to-pink-300">
+          <div className="text-center mb-8">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-pink-400 dark:from-pink-400 dark:to-pink-300">
               My Portfolio
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-4">
               A collection of my work across various media and content creation
-              disciplines
+              disciplines.
             </p>
+            {/* Category Filter (static) */}
+            <div className="flex flex-wrap justify-center gap-3 mt-4">
+              {categories.map((cat, idx) => (
+                <button
+                  key={cat}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border-2 border-pink-200 dark:border-pink-900/40 ${
+                    idx === 0
+                      ? "bg-pink-600 text-white"
+                      : "bg-white/80 dark:bg-gray-900/60 text-pink-600 dark:text-pink-300 hover:bg-pink-50 dark:hover:bg-pink-900/20"
+                  }`}
+                  disabled={idx === 0}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
-
           {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
             {projects.map((project, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-pink-100 dark:border-pink-900/50 hover:shadow-xl transition-shadow"
+                className="relative bg-white/80 dark:bg-gray-800/80 rounded-2xl overflow-hidden shadow-xl border-2 border-pink-100 dark:border-pink-900/40 backdrop-blur-xl hover:scale-105 hover:shadow-pink-200/40 transition-transform duration-300 group"
               >
-                <div className="aspect-video bg-pink-100 dark:bg-pink-900/50 relative">
-                  {/* Placeholder for project image */}
-                  <div className="absolute inset-0 flex items-center justify-center text-pink-500">
-                    <span className="text-4xl">📸</span>
+                {/* Project Image */}
+                <div className="aspect-video bg-pink-100 dark:bg-pink-900/50 relative overflow-hidden">
+                  {project.image ? (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center text-pink-500">
+                      <span className="text-4xl">📸</span>
+                    </div>
+                  )}
+                  <div className="absolute top-2 left-2 px-3 py-1 bg-pink-100 dark:bg-pink-900/60 text-pink-600 dark:text-pink-300 rounded-full text-xs font-semibold shadow">
+                    {project.category}
                   </div>
                 </div>
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-xl font-semibold text-pink-600 dark:text-pink-400">
-                      {project.title}
-                    </h3>
-                    <span className="px-3 py-1 bg-pink-100 dark:bg-pink-900/50 text-pink-600 dark:text-pink-400 rounded-full text-sm">
-                      {project.category}
-                    </span>
-                  </div>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">
+                <div className="p-6 flex flex-col h-full">
+                  <h3 className="text-xl font-semibold text-pink-600 dark:text-pink-400 mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4 flex-1">
                     {project.description}
                   </p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 mt-auto">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded text-sm"
+                        className="px-2 py-1 bg-pink-50 dark:bg-pink-900/30 text-pink-600 dark:text-pink-300 rounded text-xs font-medium"
                       >
                         {tag}
                       </span>

@@ -12,6 +12,9 @@ const nextConfig: NextConfig = {
     }
     return config;
   },
+  images: {
+    domains: ["plus.unsplash.com", "images.unsplash.com"],
+  },
 };
 
 export default nextConfig;

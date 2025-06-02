@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-pink-50 dark:from-gray-900 dark:to-pink-950/20 overflow-x-hidden">
+    <div className="mt-12 min-h-screen bg-gradient-to-b from-white to-pink-50 dark:from-gray-900 dark:to-pink-950/20 overflow-x-hidden">
       <main className="max-w-5xl mx-auto px-4 py-16">
         {/* Hero Section with Images */}
         <motion.div

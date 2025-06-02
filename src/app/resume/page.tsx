@@ -80,98 +80,110 @@ export default function Resume() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-pink-50 dark:from-gray-900 dark:to-pink-950/20">
-      <main className="max-w-4xl mx-auto px-4 py-16">
+    <div className="min-h-screen bg-gradient-to-b from-white to-pink-50 dark:from-gray-900 dark:to-pink-950/20 overflow-x-hidden">
+      <main className="max-w-5xl mx-auto px-4 py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="space-y-12"
+          className="space-y-16"
         >
           {/* Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-pink-400 dark:from-pink-400 dark:to-pink-300">
+          <div className="text-center mb-8">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-pink-600 via-fuchsia-500 to-pink-400 dark:from-pink-400 dark:to-pink-300 drop-shadow-[0_2px_24px_rgba(236,72,153,0.25)]">
               Resume
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               My professional journey and educational background
             </p>
           </div>
 
-          {/* Experience Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg border border-pink-100 dark:border-pink-900/50"
-          >
-            <h2 className="text-2xl font-bold mb-8 text-pink-600 dark:text-pink-400">
+          {/* Experience Timeline Section */}
+          <section>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-2xl md:text-3xl font-bold mb-10 text-pink-600 dark:text-pink-400 text-center"
+            >
               Professional Experience
-            </h2>
-            <div className="space-y-8">
+            </motion.h2>
+            <div className="relative border-l-4 border-pink-200 dark:border-pink-900/40 ml-4">
               {experiences.map((exp, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
                   transition={{ delay: 0.1 * index }}
-                  className="relative pl-8 border-l-2 border-pink-200 dark:border-pink-800"
+                  className="mb-10 ml-6 relative"
                 >
-                  <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-pink-500" />
-                  <div className="mb-2">
-                    <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
-                      {exp.title}
-                    </h3>
-                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                      <span>{exp.company}</span>
-                      <span>•</span>
-                      <span>{exp.period}</span>
-                    </div>
+                  <div className="absolute -left-8 top-0 w-6 h-6 rounded-full bg-gradient-to-br from-pink-400 to-fuchsia-400 border-4 border-white dark:border-gray-900 shadow-lg flex items-center justify-center text-white font-bold text-base">
+                    <span>💼</span>
                   </div>
-                  <ul className="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-300">
-                    {exp.description.map((item, i) => (
-                      <li key={i}>{item}</li>
-                    ))}
-                  </ul>
+                  <div className="bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-lg border border-pink-100 dark:border-pink-900/40 backdrop-blur-xl p-6">
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="text-xl font-semibold text-pink-600 dark:text-pink-400">
+                        {exp.title}
+                      </h3>
+                      <span className="text-xs px-3 py-1 bg-pink-100 dark:bg-pink-900/50 text-pink-600 dark:text-pink-400 rounded-full font-semibold">
+                        {exp.period}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-2">
+                      <span>{exp.company}</span>
+                    </div>
+                    <ul className="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-300">
+                      {exp.description.map((item, i) => (
+                        <li key={i}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </motion.div>
               ))}
             </div>
-          </motion.div>
+          </section>
 
           {/* Education Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg border border-pink-100 dark:border-pink-900/50"
-          >
-            <h2 className="text-2xl font-bold mb-8 text-pink-600 dark:text-pink-400">
+          <section>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-2xl md:text-3xl font-bold mb-10 text-pink-600 dark:text-pink-400 text-center"
+            >
               Education
-            </h2>
-            <div className="space-y-6">
+            </motion.h2>
+            <div className="grid md:grid-cols-2 gap-10">
               {education.map((edu, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
                   transition={{ delay: 0.1 * index }}
-                  className="flex items-center justify-between p-4 bg-pink-50 dark:bg-pink-900/20 rounded-lg"
+                  className="bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-lg border border-pink-100 dark:border-pink-900/40 backdrop-blur-xl p-6 flex flex-col justify-between"
                 >
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
-                      {edu.degree}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-400">
-                      {edu.institution}
-                    </p>
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-400 to-fuchsia-400 flex items-center justify-center text-white text-2xl shadow">
+                      🎓
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-pink-600 dark:text-pink-400">
+                        {edu.degree}
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-400">
+                        {edu.institution}
+                      </p>
+                    </div>
                   </div>
-                  <span className="px-3 py-1 bg-pink-100 dark:bg-pink-900/50 text-pink-600 dark:text-pink-400 rounded-full text-sm">
+                  <span className="self-end px-3 py-1 bg-pink-100 dark:bg-pink-900/50 text-pink-600 dark:text-pink-400 rounded-full text-sm font-semibold">
                     {edu.year}
                   </span>
                 </motion.div>
               ))}
             </div>
-          </motion.div>
+          </section>
         </motion.div>
       </main>
     </div>
