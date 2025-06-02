@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ThemeToggle } from "../app/components/ThemeLayout";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,10 +53,12 @@ const Navbar = () => {
                 <span className="absolute left-0 bottom-0 w-full h-0.5 bg-gradient-to-r from-pink-400 to-fuchsia-400 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left z-0" />
               </Link>
             ))}
+            <ThemeToggle />
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center space-x-2">
+            <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-pink-700 dark:text-pink-200 hover:text-pink-600 dark:hover:text-pink-400 focus:outline-none"
