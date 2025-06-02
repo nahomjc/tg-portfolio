@@ -202,6 +202,7 @@ export default function Home() {
   // Modal state for podcast video
   const [modalOpen, setModalOpen] = useState(false);
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
+  const [videoError, setVideoError] = useState<string | null>(null);
 
   // Podcast images and YouTube links
   const podcastData = [
@@ -525,21 +526,46 @@ export default function Home() {
               New Interview: Behind the Camera
             </motion.h2>
             <div className="w-full max-w-2xl rounded-2xl overflow-hidden shadow-xl border-2 border-pink-100 dark:border-pink-900/40 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl mb-8">
-              <video
-                controls
-                preload="metadata"
-                playsInline
-                poster="/personla-image/1747396061958.jpg"
-                className="w-full h-72 md:h-96 object-cover bg-black"
-                onError={(e) => {
-                  console.error("Video error:", e);
-                  const videoElement = e.target as HTMLVideoElement;
-                  console.error("Video error code:", videoElement.error?.code);
-                }}
-              >
-                <source src="/video/keyezerfu.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              {videoError ? (
+                <div className="w-full h-72 md:h-96 flex items-center justify-center bg-gray-100 dark:bg-gray-800 text-red-500">
+                  {videoError}
+                </div>
+              ) : (
+                <video
+                  controls
+                  preload="metadata"
+                  playsInline
+                  poster="/personla-image/1747396061958.jpg"
+                  className="w-full h-72 md:h-96 object-cover bg-black"
+                  onError={(e) => {
+                    console.error("Video error:", e);
+                    const videoElement = e.target as HTMLVideoElement;
+                    const errorCode = videoElement.error?.code;
+                    let errorMessage = "Error loading video";
+
+                    switch (errorCode) {
+                      case 1:
+                        errorMessage = "Video loading aborted";
+                        break;
+                      case 2:
+                        errorMessage = "Network error while loading video";
+                        break;
+                      case 3:
+                        errorMessage = "Video decoding error";
+                        break;
+                      case 4:
+                        errorMessage = "Video not supported";
+                        break;
+                    }
+
+                    setVideoError(errorMessage);
+                    console.error("Video error code:", errorCode);
+                  }}
+                >
+                  <source src="/video/keyezerfu.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              )}
             </div>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-xl text-center mb-4">
               Watch Tigist Fiseha&apos;s latest interview about her journey and
