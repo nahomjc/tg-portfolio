@@ -234,7 +234,10 @@ export default function BlogPost() {
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
             Post Not Found
           </h1>
-          <Link href="/blog" className="text-pink-600 hover:text-pink-700">
+          <Link
+            href="/blog"
+            className="text-[#3d4c41] hover:text-[#2d3c31] dark:text-[#4d5c51] dark:hover:text-[#3d4c41]"
+          >
             Return to Blog
           </Link>
         </div>
@@ -243,7 +246,7 @@ export default function BlogPost() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-pink-50 dark:from-gray-900 dark:to-pink-950/20">
+    <div className="min-h-screen bg-gradient-to-b from-white to-[#3d4c41]/10 dark:from-gray-900 dark:to-[#3d4c41]/20">
       <main className="max-w-4xl mx-auto px-4 py-16">
         <motion.article
           initial={{ opacity: 0, y: 20 }}
@@ -251,28 +254,42 @@ export default function BlogPost() {
           transition={{ duration: 0.5 }}
           className="space-y-8"
         >
-          {/* Back to Blog */}
-          <Link
-            href="/blog"
-            className="inline-flex items-center text-pink-600 hover:text-pink-700 mb-8"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 mr-2"
-              viewBox="0 0 20 20"
-              fill="currentColor"
+          {/* Header */}
+          <div className="text-center mb-12">
+            <Link
+              href="/blog"
+              className="inline-flex items-center text-[#3d4c41] dark:text-[#4d5c51] hover:text-[#2d3c31] dark:hover:text-[#3d4c41] mb-6"
             >
-              <path
-                fillRule="evenodd"
-                d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
-            Back to Blog
-          </Link>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 mr-2"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              Back to Blog
+            </Link>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#3d4c41] to-[#2d3c31] dark:from-[#4d5c51] dark:to-[#3d4c41]">
+              {post.title}
+            </h1>
+            <div className="flex items-center justify-center gap-4 text-gray-600 dark:text-gray-300">
+              <span>{post.date}</span>
+              <span>•</span>
+              <span>{post.readTime}</span>
+              <span>•</span>
+              <span className="px-3 py-1 bg-[#3d4c41]/10 dark:bg-[#3d4c41]/30 text-[#3d4c41] dark:text-[#4d5c51] rounded-full text-sm">
+                {post.category}
+              </span>
+            </div>
+          </div>
 
           {/* Featured Image */}
-          <div className="relative aspect-video rounded-2xl overflow-hidden">
+          <div className="relative h-[400px] rounded-2xl overflow-hidden">
             <img
               src={post.image}
               alt={post.title}
@@ -281,92 +298,39 @@ export default function BlogPost() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
           </div>
 
-          {/* Article Header */}
-          <header className="space-y-4">
-            <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-300">
-              <span>{post.date}</span>
-              <span>•</span>
-              <span>{post.readTime}</span>
-              <span>•</span>
-              <span className="px-3 py-1 bg-pink-100 dark:bg-pink-900/50 text-pink-600 dark:text-pink-400 rounded-full">
-                {post.category}
-              </span>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
-              {post.title}
-            </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300">
-              {post.excerpt}
-            </p>
-          </header>
-
           {/* Author Info */}
-          <div className="flex items-center gap-4 py-6 border-t border-b border-gray-200 dark:border-gray-700">
+          <div className="flex items-center gap-4 p-6 bg-[#3d4c41]/5 dark:bg-[#3d4c41]/10 rounded-2xl">
             <img
               src={post.author.image}
               alt={post.author.name}
-              className="w-12 h-12 rounded-full object-cover"
+              className="w-16 h-16 rounded-full object-cover"
             />
             <div>
               <h3 className="font-semibold text-gray-900 dark:text-white">
                 {post.author.name}
               </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
+              <p className="text-gray-600 dark:text-gray-300">
                 {post.author.role}
               </p>
             </div>
           </div>
 
-          {/* Article Content */}
+          {/* Content */}
           <div
             className="prose prose-lg dark:prose-invert max-w-none"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
 
           {/* Tags */}
-          <div className="flex flex-wrap gap-2 pt-8">
+          <div className="flex flex-wrap gap-2 pt-8 border-t border-[#3d4c41]/20 dark:border-[#3d4c41]/40">
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-full text-sm"
+                className="px-3 py-1 bg-[#3d4c41]/10 dark:bg-[#3d4c41]/30 text-[#3d4c41] dark:text-[#4d5c51] rounded-full text-sm"
               >
-                #{tag}
+                {tag}
               </span>
             ))}
-          </div>
-
-          {/* Share Buttons */}
-          <div className="flex items-center gap-4 pt-8 border-t border-gray-200 dark:border-gray-700">
-            <span className="text-gray-600 dark:text-gray-300">Share:</span>
-            <div className="flex gap-4">
-              <button className="text-gray-600 hover:text-pink-600 dark:text-gray-300 dark:hover:text-pink-400">
-                <svg
-                  className="w-5 h-5"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                </svg>
-              </button>
-              <button className="text-gray-600 hover:text-pink-600 dark:text-gray-300 dark:hover:text-pink-400">
-                <svg
-                  className="w-5 h-5"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
-                </svg>
-              </button>
-              <button className="text-gray-600 hover:text-pink-600 dark:text-gray-300 dark:hover:text-pink-400">
-                <svg
-                  className="w-5 h-5"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
-              </button>
-            </div>
           </div>
         </motion.article>
       </main>
