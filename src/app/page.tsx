@@ -888,7 +888,7 @@ export default function Home() {
                   controls
                   preload="metadata"
                   playsInline
-                  poster="/personla-image/1747396061958.jpg"
+                  poster="/personla-image/1748065900567(1).jpg"
                   className="w-full h-72 md:h-96 object-cover bg-black"
                   onError={(e) => {
                     console.error("Video error:", e);
