@@ -171,13 +171,13 @@ const LoadingIntro = ({ onLoadingComplete }: LoadingIntroProps) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="text-4xl font-bold mb-12 tracking-wider"
+            className="text-4xl font-bold mb-12 tracking-wider text-center w-full"
           >
             <span className="text-white">Enter the Digital Frontier</span>
           </motion.div>
 
           {/* Progress Bar Container */}
-          <div className="w-96 h-3 bg-[#2d3c31]/50 rounded-full overflow-hidden mb-6 backdrop-blur-sm border border-[#3d4c41]/20">
+          <div className="w-full max-w-96 h-3 bg-[#2d3c31]/50 rounded-full overflow-hidden mb-6 backdrop-blur-sm border border-[#3d4c41]/20">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: `${progress}%` }}
@@ -208,7 +208,7 @@ const LoadingIntro = ({ onLoadingComplete }: LoadingIntroProps) => {
           </motion.div>
 
           {/* Loading Steps */}
-          <div className="space-y-4">
+          <div className="space-y-4 w-full max-w-96">
             {loadingSteps.map((step, index) => (
               <motion.div
                 key={step}
