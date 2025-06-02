@@ -123,18 +123,18 @@ function ChatBot() {
                 e.preventDefault();
                 handleSend(input);
               }}
-              className="flex gap-2"
+              className="flex gap-2 items-center"
             >
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Type your question..."
-                className="flex-1 px-3 py-2 rounded-full border border-pink-200 dark:border-pink-800 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-pink-500 outline-none transition-colors duration-300"
+                className="flex-1 min-w-0 px-3 py-2 rounded-full border border-pink-200 dark:border-pink-800 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-pink-500 outline-none transition-colors duration-300"
               />
               <button
                 type="submit"
-                className="px-4 py-2 rounded-full bg-pink-600 dark:bg-pink-500 text-white font-semibold hover:bg-pink-700 dark:hover:bg-pink-600 transition-colors duration-300"
+                className="flex-shrink-0 px-4 py-2 rounded-full bg-pink-600 dark:bg-pink-500 text-white font-semibold hover:bg-pink-700 dark:hover:bg-pink-600 transition-colors duration-300 whitespace-nowrap"
               >
                 Send
               </button>
