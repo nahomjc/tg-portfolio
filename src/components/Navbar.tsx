@@ -18,24 +18,28 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 w-full bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl border-b border-[#3d4c41]/20 dark:border-[#3d4c41]/40 shadow-lg z-50 rounded-b-2xl">
+    <nav className="fixed top-0 w-full bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl border-b border-[#3d4c41]/20 dark:border-[#3d4c41]/40 shadow-lg z-50 rounded-b-2xl overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
-          <div className="flex items-center space-x-4">
-            <Link href="/" className="flex items-center space-x-3 group">
+          {/* Logo and Brand */}
+          <div className="flex items-center space-x-2 sm:space-x-4 min-w-0 flex-1">
+            <Link
+              href="/"
+              className="flex items-center space-x-2 sm:space-x-3 group min-w-0"
+            >
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.5 }}
-                className="w-10 h-10 rounded-full bg-gradient-to-br from-[#3d4c41] via-[#4d5c51] to-[#2d3c31] flex items-center justify-center text-white font-extrabold text-lg shadow-lg border-2 border-white dark:border-[#3d4c41] group-hover:shadow-[#3d4c41]/40 transition-shadow duration-300 relative"
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-[#3d4c41] via-[#4d5c51] to-[#2d3c31] flex items-center justify-center text-white font-extrabold text-sm sm:text-lg shadow-lg border-2 border-white dark:border-[#3d4c41] group-hover:shadow-[#3d4c41]/40 transition-shadow duration-300 relative flex-shrink-0"
               >
                 <span className="drop-shadow-[0_2px_12px_rgba(61,76,65,0.25)]">
                   TF
                 </span>
-                <span className="absolute -bottom-1 -right-1 w-3 h-3 bg-[#3d4c41] rounded-full blur-sm animate-pulse" />
+                <span className="absolute -bottom-1 -right-1 w-2 h-2 sm:w-3 sm:h-3 bg-[#3d4c41] rounded-full blur-sm animate-pulse" />
               </motion.div>
-              <span className="w-1 h-8 bg-gradient-to-b from-[#3d4c41] to-[#4d5c51] rounded-full hidden md:inline-block" />
-              <span className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#3d4c41] via-[#4d5c51] to-[#2d3c31] dark:from-[#4d5c51] dark:to-[#3d4c41] tracking-tight">
+              <span className="w-1 h-6 sm:h-8 bg-gradient-to-b from-[#3d4c41] to-[#4d5c51] rounded-full hidden md:inline-block flex-shrink-0" />
+              <span className="text-lg sm:text-xl md:text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#3d4c41] via-[#4d5c51] to-[#2d3c31] dark:from-[#4d5c51] dark:to-[#3d4c41] tracking-tight truncate">
                 Tigist Fiseha
               </span>
             </Link>
@@ -59,17 +63,19 @@ const Navbar = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-2">
-            <div className="mr-2">
+          <div className="md:hidden flex items-center space-x-2 flex-shrink-0">
+            <div className="mr-1 sm:mr-2">
               <ThemeToggle />
             </div>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-[#3d4c41] dark:text-[#4d5c51] hover:text-[#2d3c31] dark:hover:text-[#3d4c41] focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-md text-[#3d4c41] dark:text-[#4d5c51] hover:text-[#2d3c31] dark:hover:text-[#3d4c41] focus:outline-none focus:ring-2 focus:ring-[#3d4c41]/20"
             >
               <span className="sr-only">Open main menu</span>
               <svg
-                className={`${isOpen ? "hidden" : "block"} h-6 w-6`}
+                className={`${
+                  isOpen ? "hidden" : "block"
+                } h-5 w-5 sm:h-6 sm:w-6`}
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -83,7 +89,9 @@ const Navbar = () => {
                 />
               </svg>
               <svg
-                className={`${isOpen ? "block" : "hidden"} h-6 w-6`}
+                className={`${
+                  isOpen ? "block" : "hidden"
+                } h-5 w-5 sm:h-6 sm:w-6`}
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -108,9 +116,9 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border-b border-[#3d4c41]/20 dark:border-[#3d4c41]/40 shadow-lg rounded-b-2xl"
+            className="md:hidden bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border-b border-[#3d4c41]/20 dark:border-[#3d4c41]/40 shadow-lg rounded-b-2xl overflow-hidden"
           >
-            <div className="px-2 pt-2 pb-3 space-y-1">
+            <div className="px-4 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
                 <Link
                   key={item.href}

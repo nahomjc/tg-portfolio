@@ -175,7 +175,10 @@ function HeroBlobs() {
   }, []);
 
   return (
-    <div ref={ref} className="absolute inset-0 z-0 pointer-events-auto">
+    <div
+      ref={ref}
+      className="absolute inset-0 z-0 pointer-events-auto overflow-hidden"
+    >
       {/* Animated Blobs */}
       <motion.div
         animate={{
@@ -562,7 +565,7 @@ export default function Home() {
         className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300"
       >
         {/* Hero Section */}
-        <section className="relative min-h-screen pt-24 md:pt-32 lg:pt-36 flex items-center justify-center bg-gradient-to-br from-white via-[#3d4c41]/5 to-[#3d4c41]/10 dark:from-gray-900 dark:via-[#3d4c41]/10 dark:to-[#3d4c41]/20 overflow-hidden">
+        <section className="relative min-h-screen pt-24 md:pt-32 lg:pt-36 flex items-center justify-center bg-gradient-to-br from-white via-[#3d4c41]/5 to-[#3d4c41]/10 dark:from-gray-900 dark:via-[#3d4c41]/10 dark:to-[#3d4c41]/20 overflow-hidden mobile-safe">
           {/* Enhanced Interactive Animated Blobs & Parallax */}
           <HeroBlobs />
 
@@ -582,7 +585,7 @@ export default function Home() {
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="absolute top-20 left-10 w-16 h-16 bg-gradient-to-br from-[#3d4c41]/20 to-[#4d5c51]/20 rounded-2xl backdrop-blur-sm border border-[#3d4c41]/30 shadow-lg"
+            className="absolute top-20 left-4 sm:left-10 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#3d4c41]/20 to-[#4d5c51]/20 rounded-2xl backdrop-blur-sm border border-[#3d4c41]/30 shadow-lg"
           />
 
           <motion.div
@@ -596,10 +599,10 @@ export default function Home() {
               ease: "easeInOut",
               delay: 2,
             }}
-            className="absolute bottom-20 right-10 w-12 h-12 bg-gradient-to-br from-[#4d5c51]/20 to-[#3d4c41]/20 rounded-full backdrop-blur-sm border border-[#3d4c41]/30 shadow-lg"
+            className="absolute bottom-20 right-4 sm:right-10 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#4d5c51]/20 to-[#3d4c41]/20 rounded-full backdrop-blur-sm border border-[#3d4c41]/30 shadow-lg"
           />
 
-          <div className="container mx-auto px-4 z-10 flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-20">
+          <div className="container mx-auto px-4 z-10 flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-20 max-w-full overflow-hidden">
             {/* Enhanced Profile Image with Professional Effects */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
@@ -608,7 +611,7 @@ export default function Home() {
               className="relative group"
             >
               {/* Main Image Container */}
-              <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-[#3d4c41]/20 dark:border-[#3d4c41]/40 bg-white/30 dark:bg-[#3d4c41]/30 backdrop-blur-lg flex-shrink-0">
+              <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-[#3d4c41]/20 dark:border-[#3d4c41]/40 bg-white/30 dark:bg-[#3d4c41]/30 backdrop-blur-lg flex-shrink-0">
                 <Image
                   src="/photo1.jpg"
                   alt="Tigist Fiseha - Professional Content Creator"
@@ -648,7 +651,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.5, duration: 0.5 }}
-                className="absolute -left-8 top-1/2 transform -translate-y-1/2 space-y-2"
+                className="absolute -left-2 sm:-left-8 top-1/2 transform -translate-y-1/2 space-y-2 hidden sm:block"
               >
                 {[
                   "Script Writing",
@@ -667,6 +670,28 @@ export default function Home() {
                   </motion.div>
                 ))}
               </motion.div>
+            </motion.div>
+
+            {/* Mobile Skills Pills - Show below image on mobile */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.5, duration: 0.5 }}
+              className="sm:hidden mt-4 flex flex-wrap justify-center gap-2"
+            >
+              {["Script Writing", "Journalism", "E-learning", "Podcasting"].map(
+                (skill, index) => (
+                  <motion.div
+                    key={skill}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 1.7 + index * 0.1, duration: 0.5 }}
+                    className="bg-white/90 dark:bg-gray-800/90 text-[#3d4c41] dark:text-[#4d5c51] px-3 py-1 rounded-full text-xs font-medium shadow-lg border border-[#3d4c41]/20 backdrop-blur-sm"
+                  >
+                    {skill}
+                  </motion.div>
+                )
+              )}
             </motion.div>
 
             {/* Enhanced Hero Text Content */}
@@ -689,7 +714,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
-                className="text-6xl md:text-7xl lg:text-8xl font-black mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#3d4c41] via-[#4d5c51] to-[#2d3c31] dark:from-[#4d5c51] dark:via-[#3d4c41] dark:to-[#5d6c61] leading-tight"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#3d4c41] via-[#4d5c51] to-[#2d3c31] dark:from-[#4d5c51] dark:via-[#3d4c41] dark:to-[#5d6c61] leading-tight break-words"
               >
                 Tigist Fiseha
               </motion.h1>
@@ -699,7 +724,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.6 }}
-                className="text-xl md:text-2xl lg:text-3xl text-[#3d4c41] dark:text-[#4d5c51] mb-4 font-light tracking-wide"
+                className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#3d4c41] dark:text-[#4d5c51] mb-4 font-light tracking-wide break-words"
               >
                 Multidisciplinary Content Creator
               </motion.p>
@@ -709,7 +734,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7, duration: 0.6 }}
-                className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 font-normal leading-relaxed max-w-lg mx-auto lg:mx-0"
+                className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 font-normal leading-relaxed max-w-lg mx-auto lg:mx-0 px-4 sm:px-0"
               >
                 Crafting compelling narratives, delivering impactful news, and
                 creating engaging educational content that connects with
@@ -744,11 +769,11 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.9, duration: 0.6 }}
-                className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4"
+                className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 px-4 sm:px-0"
               >
                 <Link
                   href="/portfolio"
-                  className="group relative px-8 py-4 text-lg font-semibold rounded-full bg-gradient-to-r from-[#3d4c41] to-[#4d5c51] text-white shadow-xl hover:shadow-2xl hover:shadow-[#3d4c41]/40 transition-all duration-300 border-2 border-[#3d4c41]/30 overflow-hidden"
+                  className="group relative px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-full bg-gradient-to-r from-[#3d4c41] to-[#4d5c51] text-white shadow-xl hover:shadow-2xl hover:shadow-[#3d4c41]/40 transition-all duration-300 border-2 border-[#3d4c41]/30 overflow-hidden"
                 >
                   <span className="relative z-10 flex items-center gap-2">
                     View My Work
@@ -771,7 +796,7 @@ export default function Home() {
 
                 <Link
                   href="/contact"
-                  className="group relative px-8 py-4 text-lg font-semibold rounded-full bg-white/90 dark:bg-gray-800/90 text-[#3d4c41] dark:text-[#4d5c51] border-2 border-[#3d4c41]/30 shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm overflow-hidden"
+                  className="group relative px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-full bg-white/90 dark:bg-gray-800/90 text-[#3d4c41] dark:text-[#4d5c51] border-2 border-[#3d4c41]/30 shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm overflow-hidden"
                 >
                   <span className="relative z-10 flex items-center gap-2">
                     Get in Touch
