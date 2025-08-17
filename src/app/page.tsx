@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import LoadingIntro from "./components/LoadingIntro";
 import Link from "next/link";
+import Image from "next/image";
 import React from "react";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
@@ -478,8 +479,8 @@ export default function Home() {
   // Podcast images and YouTube links
   const podcastData = [
     {
-      img: "/podcast/1745078730179.jpg",
-      youtube: "https://www.youtube.com/embed/MRjoAHKxETA",
+      img: "/podcast/youtube-2.jpg",
+      youtube: "https://www.youtube.com/embed/KCc0myP8a-4",
     },
     {
       img: "/podcast/1746802085766.jpg",
@@ -490,8 +491,30 @@ export default function Home() {
       youtube: "https://www.youtube.com/embed/2kRE-br79DA",
     },
     {
-      img: "/podcast/1747833282645.jpg",
-      youtube: "https://www.youtube.com/embed/JgqSCh0V0OM",
+      img: "/podcast/youtube-1.jpg",
+      youtube: "https://www.youtube.com/embed/Y8bFWxMceE",
+    },
+  ];
+
+  // News Broadcasting videos
+  const newsBroadcastingData = [
+    {
+      title: "News Report 1",
+      description: "Latest news coverage and reporting",
+      youtube: "https://www.youtube.com/embed/mnA5Nlu9Wh8",
+      thumbnail: "https://img.youtube.com/vi/mnA5Nlu9Wh8/maxresdefault.jpg",
+    },
+    {
+      title: "News Report 2",
+      description: "In-depth news analysis and coverage",
+      youtube: "https://www.youtube.com/embed/0P-tnV1bpfc",
+      thumbnail: "https://img.youtube.com/vi/0P-tnV1bpfc/maxresdefault.jpg",
+    },
+    {
+      title: "News Report 3",
+      description: "Breaking news and live reporting",
+      youtube: "https://www.youtube.com/embed/SFRuP8q5zlY",
+      thumbnail: "https://img.youtube.com/vi/SFRuP8q5zlY/maxresdefault.jpg",
     },
   ];
 
@@ -530,10 +553,11 @@ export default function Home() {
               transition={{ delay: 0.2 }}
               className="relative w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden shadow-2xl border-4 border-[#3d4c41]/20 dark:border-[#3d4c41]/40 bg-white/30 dark:bg-[#3d4c41]/30 backdrop-blur-lg flex-shrink-0"
             >
-              <img
+              <Image
                 src="/photo1.jpg"
                 alt="Tigist Fiseha profile"
-                className="w-full h-full object-cover object-center rounded-full border-4 border-[#3d4c41]/20 dark:border-[#3d4c41]/40 shadow-xl"
+                fill
+                className="object-cover object-center rounded-full border-4 border-[#3d4c41]/20 dark:border-[#3d4c41]/40 shadow-xl"
               />
               <div className="absolute inset-0 rounded-full ring-4 ring-[#3d4c41]/30 animate-glow" />
             </motion.div>
@@ -662,7 +686,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 * idx }}
-                  className="relative rounded-2xl overflow-hidden shadow-lg border-2 border-[#3d4c41]/20 dark:border-[#3d4c41]/40 bg-white/60 dark:bg-gray-800/60 hover:scale-105 hover:shadow-[#3d4c41]/40 transition-transform duration-300 group cursor-pointer"
+                  className="relative rounded-2xl overflow-hidden shadow-lg border-2 border-[#3d4c41]/20 dark:border-[#3d4c41]/40 bg-white/60 dark:bg-gray-800/60 hover:scale-105 hover:shadow-[#3d4c41]/40 transition-transform duration-300 group cursor-pointer h-64 sm:h-72"
                   onClick={() => {
                     setActiveVideo(pod.youtube);
                     setModalOpen(true);
@@ -677,10 +701,11 @@ export default function Home() {
                     }
                   }}
                 >
-                  <img
+                  <Image
                     src={pod.img}
                     alt={`Podcast episode ${idx + 1}`}
-                    className="w-full h-64 object-cover object-center group-hover:brightness-110 group-hover:blur-[1px] transition-all duration-300"
+                    fill
+                    className="object-cover object-center group-hover:brightness-110 group-hover:blur-[1px] transition-all duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#3d4c41]/60 to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex items-end p-4">
                     <span className="text-white text-lg font-semibold drop-shadow-lg">
@@ -729,6 +754,264 @@ export default function Home() {
           </div>
         )}
 
+        {/* News Broadcasting Section */}
+        <section className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+          <div className="container mx-auto px-4">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-3xl md:text-4xl font-bold mb-6 text-center text-[#3d4c41] dark:text-[#4d5c51]"
+            >
+              News Broadcasting
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-lg text-gray-600 dark:text-gray-300 mb-12 text-center max-w-2xl mx-auto"
+            >
+              Experience my professional news broadcasting work, delivering
+              accurate, timely, and engaging news coverage across various topics
+              and events.
+            </motion.p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {newsBroadcastingData.map((news, idx) => (
+                <motion.div
+                  key={news.youtube}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 * idx }}
+                  className="group relative bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl border border-[#3d4c41]/10 dark:border-[#3d4c41]/30 hover:shadow-2xl hover:shadow-[#3d4c41]/20 dark:hover:shadow-[#3d4c41]/30 transition-all duration-500 cursor-pointer transform hover:-translate-y-2"
+                  onClick={() => {
+                    setActiveVideo(news.youtube);
+                    setModalOpen(true);
+                  }}
+                  tabIndex={0}
+                  aria-label={`Open news video ${idx + 1}`}
+                  role="button"
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      setActiveVideo(news.youtube);
+                      setModalOpen(true);
+                    }
+                  }}
+                >
+                  {/* Card Header with Image */}
+                  <div className="relative h-56 overflow-hidden">
+                    <Image
+                      src={news.thumbnail}
+                      alt={news.title}
+                      fill
+                      className="object-cover object-center group-hover:scale-110 transition-transform duration-700"
+                    />
+
+                    {/* Overlay Gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                    {/* Play Button Overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-75 group-hover:scale-100">
+                      <div className="w-20 h-20 bg-white/95 dark:bg-gray-900/95 rounded-full flex items-center justify-center shadow-2xl backdrop-blur-sm border-2 border-white/20">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                          className="w-10 h-10 text-[#3d4c41] dark:text-[#4d5c51] ml-1"
+                        >
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
+                    </div>
+
+                    {/* News Badge */}
+                    <div className="absolute top-4 left-4">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-red-500/90 text-white backdrop-blur-sm border border-red-400/30">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={2}
+                          stroke="currentColor"
+                          className="w-3 h-3 mr-1"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
+                          />
+                        </svg>
+                        LIVE NEWS
+                      </span>
+                    </div>
+
+                    {/* Duration Badge */}
+                    <div className="absolute top-4 right-4">
+                      <span className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-black/70 text-white backdrop-blur-sm">
+                        5:32
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Card Content */}
+                  <div className="p-6">
+                    {/* Category Tag */}
+                    <div className="flex items-center mb-3">
+                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#3d4c41]/10 dark:bg-[#3d4c41]/30 text-[#3d4c41] dark:text-[#4d5c51]">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="w-3 h-3 mr-1"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
+                          />
+                        </svg>
+                        News Broadcasting
+                      </span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-xl font-bold mb-3 text-[#3d4c41] dark:text-[#4d5c51] group-hover:text-[#2d3c31] dark:group-hover:text-[#3d4c41] transition-colors duration-300 line-clamp-2">
+                      {news.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed line-clamp-3">
+                      {news.description}
+                    </p>
+
+                    {/* Footer with Date and View Count */}
+                    <div className="flex items-center justify-between pt-4 border-t border-[#3d4c41]/10 dark:border-[#3d4c41]/20">
+                      <div className="flex items-center text-xs text-[#3d4c41]/60 dark:text-[#4d5c51]/60">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="w-3 h-3 mr-1"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
+                          />
+                        </svg>
+                        Dec 15, 2024
+                      </div>
+                      <div className="flex items-center text-xs text-[#3d4c41]/60 dark:text-[#4d5c51]/60">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="w-3 h-3 mr-1"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.639 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.639 0-8.573-3.007-9.963-7.178z"
+                          />
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                          />
+                        </svg>
+                        2.4K views
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Hover Effect Border */}
+                  <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-[#3d4c41]/20 dark:group-hover:border-[#3d4c41]/40 transition-colors duration-500 pointer-events-none" />
+                </motion.div>
+              ))}
+            </div>
+            <div className="flex justify-center mt-10">
+              <a
+                href="http://youtube.com/@Keyezerfu/featured"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-3 rounded-full bg-gradient-to-r from-[#3d4c41] to-[#4d5c51] text-white font-semibold shadow-lg hover:scale-105 hover:shadow-[#3d4c41]/40 transition-transform duration-200 border-2 border-[#3d4c41]/30"
+              >
+                More News Coverage
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Certificate Section */}
+        <section className="py-20 bg-gradient-to-b from-white to-[#3d4c41]/10 dark:from-gray-900 dark:to-[#3d4c41]/20 transition-colors duration-300">
+          <div className="container mx-auto px-4">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-3xl md:text-4xl font-bold mb-6 text-center text-[#3d4c41] dark:text-[#4d5c51]"
+            >
+              Professional Certification
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-lg text-gray-600 dark:text-gray-300 mb-12 text-center max-w-2xl mx-auto"
+            >
+              I&apos;m proud to have earned professional certifications that
+              validate my expertise in journalism and content creation.
+            </motion.p>
+            <div className="max-w-4xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-[#3d4c41]/20 dark:border-[#3d4c41]/40 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl"
+              >
+                <Image
+                  src="/certefication/certefication.jpg"
+                  alt="Michigan State University Journalism Certificate"
+                  width={800}
+                  height={600}
+                  className="w-full h-auto object-contain"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#3d4c41]/20 via-transparent to-transparent pointer-events-none" />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+                className="mt-8 text-center"
+              >
+                <h3 className="text-xl font-semibold mb-4 text-[#3d4c41] dark:text-[#4d5c51]">
+                  Capstone: Create Your Own Professional Journalistic Portfolio
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  Michigan State University • Coursera • April 2024
+                </p>
+                <p className="text-sm text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
+                  This comprehensive course focused on developing professional
+                  journalistic portfolios, enhancing storytelling skills, and
+                  mastering digital content creation techniques. The
+                  certification demonstrates my commitment to continuous
+                  learning and professional development.
+                </p>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
         {/* About Preview Section */}
         <section className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
           <div className="container mx-auto px-4">
@@ -741,10 +1024,11 @@ export default function Home() {
                 transition={{ delay: 0.1 }}
                 className="w-40 h-40 md:w-56 md:h-56 rounded-3xl overflow-hidden shadow-xl border-4 border-[#3d4c41]/20 dark:border-[#3d4c41]/40 bg-white/40 dark:bg-[#3d4c41]/30 backdrop-blur-lg flex-shrink-0 mb-8 md:mb-0"
               >
-                <img
-                  src="/personla-image/photo_2025-04-28_12-01-26.jpg"
+                <Image
+                  src="/personla-image/image-11.jpg"
                   alt="Tigist Fiseha personal"
-                  className="w-full h-full object-cover object-center rounded-3xl"
+                  fill
+                  className="object-cover object-center rounded-3xl"
                 />
               </motion.div>
               {/* About Text */}
@@ -755,7 +1039,7 @@ export default function Home() {
                   viewport={{ once: true }}
                   className="text-3xl md:text-4xl font-bold mb-6 text-[#3d4c41] dark:text-[#4d5c51]"
                 >
-                  About Me
+                  Who Am I?
                 </motion.h2>
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
@@ -764,21 +1048,13 @@ export default function Home() {
                   transition={{ delay: 0.1 }}
                   className="text-lg text-gray-600 dark:text-gray-300 mb-8"
                 >
-                  A multidisciplinary content creator passionate about
-                  storytelling, research, and digital education. Based in Addis
-                  Ababa, Ethiopia, I combine my expertise in journalism, script
-                  writing, and e-learning to create impactful content that
-                  educates and inspires.
-                </motion.p>
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.15 }}
-                  className="text-base text-[#3d4c41] dark:text-[#4d5c51] mb-6 font-semibold"
-                >
-                  Yourself comes first—taking care of yourself is the foundation
-                  for everything else.
+                  I&apos;m a passionate storyteller with a background in
+                  journalism, content development, and education. I specialize
+                  in crafting engaging narratives across diverse platforms—from
+                  scripts and podcasts to educational media and investigative
+                  journalism. With a Master&apos;s in Literature and years of
+                  experience in content creation, I bring creativity, clarity,
+                  and purpose to every project I take on.
                 </motion.p>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}

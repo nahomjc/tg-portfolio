@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
     return config;
   },
   images: {
-    domains: ["plus.unsplash.com", "images.unsplash.com"],
+    domains: ["plus.unsplash.com", "images.unsplash.com", "img.youtube.com"],
   },
 };
 

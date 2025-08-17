@@ -49,7 +49,7 @@ export default function About() {
             >
               <div className="aspect-square rounded-2xl overflow-hidden shadow-xl border-4 border-[#3d4c41]/20 dark:border-[#3d4c41]/40">
                 <Image
-                  src="/personla-image/photo_2025-04-28_12-01-26.jpg"
+                  src="/personla-image/image-12.jpg"
                   alt="Tigist Fiseha"
                   fill
                   className="object-cover"
