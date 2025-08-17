@@ -542,62 +542,256 @@ export default function Home() {
         className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300"
       >
         {/* Hero Section */}
-        <section className="relative min-h-[calc(100vh-4rem)] mt-16 flex items-center justify-center bg-gradient-to-b from-white to-[#3d4c41]/10 dark:from-gray-900 dark:to-[#3d4c41]/20 overflow-hidden">
-          {/* Interactive Animated Blobs & Parallax */}
+        <section className="relative min-h-screen pt-24 md:pt-32 lg:pt-36 flex items-center justify-center bg-gradient-to-br from-white via-[#3d4c41]/5 to-[#3d4c41]/10 dark:from-gray-900 dark:via-[#3d4c41]/10 dark:to-[#3d4c41]/20 overflow-hidden">
+          {/* Enhanced Interactive Animated Blobs & Parallax */}
           <HeroBlobs />
-          <div className="container mx-auto px-4 z-10 flex flex-col md:flex-row items-center justify-center gap-12">
-            {/* Profile Image with glassmorphism and glow */}
+
+          {/* Professional Background Pattern */}
+          <div className="absolute inset-0 opacity-5 dark:opacity-10">
+            <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%233d4c41%22%20fill-opacity%3D%220.1%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+          </div>
+
+          {/* Floating Professional Elements */}
+          <motion.div
+            animate={{
+              y: [0, -10, 0],
+              rotate: [0, 5, 0],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="absolute top-20 left-10 w-16 h-16 bg-gradient-to-br from-[#3d4c41]/20 to-[#4d5c51]/20 rounded-2xl backdrop-blur-sm border border-[#3d4c41]/30 shadow-lg"
+          />
+
+          <motion.div
+            animate={{
+              y: [0, 15, 0],
+              rotate: [0, -5, 0],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2,
+            }}
+            className="absolute bottom-20 right-10 w-12 h-12 bg-gradient-to-br from-[#4d5c51]/20 to-[#3d4c41]/20 rounded-full backdrop-blur-sm border border-[#3d4c41]/30 shadow-lg"
+          />
+
+          <div className="container mx-auto px-4 z-10 flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-20">
+            {/* Enhanced Profile Image with Professional Effects */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="relative w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden shadow-2xl border-4 border-[#3d4c41]/20 dark:border-[#3d4c41]/40 bg-white/30 dark:bg-[#3d4c41]/30 backdrop-blur-lg flex-shrink-0"
+              initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
+              animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+              transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
+              className="relative group"
             >
-              <Image
-                src="/photo1.jpg"
-                alt="Tigist Fiseha profile"
-                fill
-                className="object-cover object-center rounded-full border-4 border-[#3d4c41]/20 dark:border-[#3d4c41]/40 shadow-xl"
-              />
-              <div className="absolute inset-0 rounded-full ring-4 ring-[#3d4c41]/30 animate-glow" />
-            </motion.div>
-            {/* Hero Text */}
-            <div className="text-center md:text-left max-w-xl">
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="text-5xl md:text-7xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#3d4c41] via-[#4d5c51] to-[#2d3c31] dark:from-[#4d5c51] dark:to-[#3d4c41] drop-shadow-[0_2px_24px_rgba(61,76,65,0.25)]"
+              {/* Main Image Container */}
+              <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-[#3d4c41]/20 dark:border-[#3d4c41]/40 bg-white/30 dark:bg-[#3d4c41]/30 backdrop-blur-lg flex-shrink-0">
+                <Image
+                  src="/photo1.jpg"
+                  alt="Tigist Fiseha - Professional Content Creator"
+                  fill
+                  className="object-cover object-center rounded-full border-4 border-[#3d4c41]/20 dark:border-[#3d4c41]/40 shadow-xl group-hover:scale-110 transition-transform duration-700"
+                />
+
+                {/* Professional Glow Effect */}
+                <div className="absolute inset-0 rounded-full ring-4 ring-[#3d4c41]/30 animate-pulse" />
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-transparent via-[#3d4c41]/10 to-transparent opacity-60" />
+              </div>
+
+              {/* Floating Professional Badges */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1, duration: 0.5 }}
+                className="absolute -top-4 -right-4 bg-gradient-to-r from-[#3d4c41] to-[#4d5c51] text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg border border-white/20"
               >
-                Tigist Fiseha
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="text-xl md:text-2xl text-[#3d4c41] dark:text-[#4d5c51] mb-8 font-medium tracking-wide"
+                Available
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1.2, duration: 0.5 }}
+                className="absolute -bottom-4 -left-4 bg-white/90 dark:bg-gray-800/90 text-[#3d4c41] dark:text-[#4d5c51] px-3 py-1 rounded-full text-xs font-semibold shadow-lg border border-[#3d4c41]/20 backdrop-blur-sm"
               >
-                Script Writer · Journalist · E-learning Content Developer ·
-                Podcaster
-              </motion.p>
+                5+ Years Exp
+              </motion.div>
+
+              {/* Professional Skills Pills */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="flex flex-col sm:flex-row justify-center md:justify-start gap-4"
+                transition={{ delay: 1.5, duration: 0.5 }}
+                className="absolute -left-8 top-1/2 transform -translate-y-1/2 space-y-2"
+              >
+                {[
+                  "Script Writing",
+                  "Journalism",
+                  "E-learning",
+                  "Podcasting",
+                ].map((skill, index) => (
+                  <motion.div
+                    key={skill}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 1.7 + index * 0.1, duration: 0.5 }}
+                    className="bg-white/90 dark:bg-gray-800/90 text-[#3d4c41] dark:text-[#4d5c51] px-3 py-1 rounded-full text-xs font-medium shadow-lg border border-[#3d4c41]/20 backdrop-blur-sm whitespace-nowrap"
+                  >
+                    {skill}
+                  </motion.div>
+                ))}
+              </motion.div>
+            </motion.div>
+
+            {/* Enhanced Hero Text Content */}
+            <div className="text-center lg:text-left max-w-2xl">
+              {/* Professional Title Badge */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-[#3d4c41]/10 to-[#4d5c51]/10 dark:from-[#3d4c41]/20 dark:to-[#4d5c51]/20 px-4 py-2 rounded-full border border-[#3d4c41]/20 dark:border-[#3d4c41]/40 mb-6 backdrop-blur-sm"
+              >
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span className="text-sm font-medium text-[#3d4c41] dark:text-[#4d5c51]">
+                  Professional Content Creator
+                </span>
+              </motion.div>
+
+              {/* Enhanced Main Title */}
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.8 }}
+                className="text-6xl md:text-7xl lg:text-8xl font-black mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#3d4c41] via-[#4d5c51] to-[#2d3c31] dark:from-[#4d5c51] dark:via-[#3d4c41] dark:to-[#5d6c61] leading-tight"
+              >
+                Tigist Fiseha
+              </motion.h1>
+
+              {/* Professional Subtitle */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.6 }}
+                className="text-xl md:text-2xl lg:text-3xl text-[#3d4c41] dark:text-[#4d5c51] mb-4 font-light tracking-wide"
+              >
+                Multidisciplinary Content Creator
+              </motion.p>
+
+              {/* Professional Description */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7, duration: 0.6 }}
+                className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 font-normal leading-relaxed max-w-lg mx-auto lg:mx-0"
+              >
+                Crafting compelling narratives, delivering impactful news, and
+                creating engaging educational content that connects with
+                audiences worldwide.
+              </motion.p>
+
+              {/* Professional Stats */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8, duration: 0.6 }}
+                className="flex flex-wrap justify-center lg:justify-start gap-6 mb-8"
+              >
+                {[
+                  { number: "50+", label: "Projects Completed" },
+                  { number: "100K+", label: "Content Views" },
+                  { number: "5+", label: "Years Experience" },
+                ].map((stat) => (
+                  <div key={stat.label} className="text-center">
+                    <div className="text-2xl md:text-3xl font-bold text-[#3d4c41] dark:text-[#4d5c51]">
+                      {stat.number}
+                    </div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">
+                      {stat.label}
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+
+              {/* Enhanced CTA Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9, duration: 0.6 }}
+                className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4"
               >
                 <Link
                   href="/portfolio"
-                  className="px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base rounded-full bg-gradient-to-r from-[#3d4c41] to-[#4d5c51] text-white font-semibold shadow-lg hover:scale-105 hover:shadow-[#3d4c41]/40 transition-transform duration-200 border-2 border-[#3d4c41]/30"
+                  className="group relative px-8 py-4 text-lg font-semibold rounded-full bg-gradient-to-r from-[#3d4c41] to-[#4d5c51] text-white shadow-xl hover:shadow-2xl hover:shadow-[#3d4c41]/40 transition-all duration-300 border-2 border-[#3d4c41]/30 overflow-hidden"
                 >
-                  View My Work
+                  <span className="relative z-10 flex items-center gap-2">
+                    View My Work
+                    <svg
+                      className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#4d5c51] to-[#3d4c41] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </Link>
+
                 <Link
                   href="/contact"
-                  className="px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base rounded-full bg-white/80 dark:bg-gray-900/80 text-[#3d4c41] dark:text-[#4d5c51] font-semibold border-2 border-[#3d4c41]/30 shadow hover:bg-[#3d4c41]/10 dark:hover:bg-[#3d4c41]/40 hover:scale-105 transition-transform duration-200"
+                  className="group relative px-8 py-4 text-lg font-semibold rounded-full bg-white/90 dark:bg-gray-800/90 text-[#3d4c41] dark:text-[#4d5c51] border-2 border-[#3d4c41]/30 shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm overflow-hidden"
                 >
-                  Get in Touch
+                  <span className="relative z-10 flex items-center gap-2">
+                    Get in Touch
+                    <svg
+                      className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                      />
+                    </svg>
+                  </span>
+                  <div className="absolute inset-0 bg-[#3d4c41]/10 dark:bg-[#3d4c41]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </Link>
+              </motion.div>
+
+              {/* Professional Social Proof */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.0, duration: 0.6 }}
+                className="mt-8 pt-6 border-t border-[#3d4c41]/20 dark:border-[#3d4c41]/40"
+              >
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
+                  Trusted by leading organizations
+                </p>
+                <div className="flex flex-wrap justify-center lg:justify-start gap-4 opacity-60">
+                  {["Muyalogy", "Ewqet.org", "Hamer Media", "Keyezerfu"].map(
+                    (company) => (
+                      <div
+                        key={company}
+                        className="text-xs font-medium text-[#3d4c41] dark:text-[#4d5c51] bg-white/50 dark:bg-gray-800/50 px-3 py-1 rounded-full border border-[#3d4c41]/20"
+                      >
+                        {company}
+                      </div>
+                    )
+                  )}
+                </div>
               </motion.div>
             </div>
           </div>
