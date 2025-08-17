@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import Head from "next/head";
 
 // Chatbot Q&A data
 const chatbotQA = [
@@ -529,6 +530,25 @@ export default function Home() {
 
   return (
     <ThemeProvider>
+      <Head>
+        {/* Preload critical images */}
+        <link rel="preload" as="image" href="/photo1.jpg" />
+        <link
+          rel="preload"
+          as="image"
+          href="/certefication/certefication.jpg"
+        />
+        <link rel="dns-prefetch" href="//img.youtube.com" />
+        <link rel="dns-prefetch" href="//images.unsplash.com" />
+
+        {/* Image optimization hints */}
+        <meta name="image-optimization" content="webp,avif" />
+        <meta name="image-compression" content="85" />
+
+        {/* Resource hints for better performance */}
+        <link rel="preconnect" href="https://img.youtube.com" />
+        <link rel="preconnect" href="https://images.unsplash.com" />
+      </Head>
       <AnimatePresence mode="wait">
         {isLoading && (
           <LoadingIntro onLoadingComplete={() => setIsLoading(false)} />
@@ -593,6 +613,9 @@ export default function Home() {
                   src="/photo1.jpg"
                   alt="Tigist Fiseha - Professional Content Creator"
                   fill
+                  sizes="(max-width: 768px) 256px, (max-width: 1024px) 320px, 384px"
+                  priority
+                  quality={85}
                   className="object-cover object-center rounded-full border-4 border-[#3d4c41]/20 dark:border-[#3d4c41]/40 shadow-xl group-hover:scale-110 transition-transform duration-700"
                 />
 
@@ -899,6 +922,9 @@ export default function Home() {
                     src={pod.img}
                     alt={`Podcast episode ${idx + 1}`}
                     fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 25vw, 300px"
+                    quality={75}
+                    loading="lazy"
                     className="object-cover object-center group-hover:brightness-110 group-hover:blur-[1px] transition-all duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#3d4c41]/60 to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex items-end p-4">
@@ -999,6 +1025,9 @@ export default function Home() {
                       src={news.thumbnail}
                       alt={news.title}
                       fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      quality={75}
+                      loading="lazy"
                       className="object-cover object-center group-hover:scale-110 transition-transform duration-700"
                     />
 
@@ -1177,6 +1206,9 @@ export default function Home() {
                   alt="Michigan State University Journalism Certificate"
                   width={800}
                   height={600}
+                  sizes="(max-width: 768px) 100vw, 800px"
+                  quality={80}
+                  loading="lazy"
                   className="w-full h-auto object-contain"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#3d4c41]/20 via-transparent to-transparent pointer-events-none" />
@@ -1222,6 +1254,9 @@ export default function Home() {
                   src="/personla-image/image-11.jpg"
                   alt="Tigist Fiseha personal"
                   fill
+                  sizes="(max-width: 768px) 160px, 224px"
+                  quality={80}
+                  loading="lazy"
                   className="object-cover object-center rounded-3xl"
                 />
               </motion.div>
